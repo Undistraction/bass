@@ -1,0 +1,21 @@
+{
+  "name": "Bass",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Undistraction/bass",
+  "authors": [
+    "Pedr Browne <pedr.browne@gmail.com>"
+  ],
+  "description": "Personal Sass Toolkit",
+  "main": "sass/*",
+  "keywords": [
+    "sass"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
