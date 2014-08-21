@@ -1,0 +1,22 @@
+// Palette Map allows you to register and retrieve nested objects containing color palettes
+
+$palette-map: ();
+
+@function color-for($palette-path...) {
+  @return map-get-deep($palette-map, $palette-path);
+}
+
+// If no name is given, the values in $palette are added to $palette map's top level
+@function register-palette($name:null, $palette:null) {
+  @if $name {
+    $palette-map: map-merge($palette-map, ($name: $palette));
+  }@else{
+    $palette-map: map-merge($palette-map, $palette);
+  }
+  @return none;
+}
+
+// Because sass doesn't support function invocation at a root level it has to be done from within a mixin
+@mixin register-palette($name:null, $palette:null){
+  $temp: register-palette($name, $palette);
+}

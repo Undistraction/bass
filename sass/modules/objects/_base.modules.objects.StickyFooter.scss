@@ -1,0 +1,13 @@
+.StickyFooterContentWrapper
+{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto; // the bottom margin is the negative value of the footer's height
+}
+
+.StickyFooterPush
+{
+  height: $default-footer-height; // '.push' must be the same height as 'footer'
+  @include padding-trailer(1);
+}

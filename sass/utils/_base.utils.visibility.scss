@@ -1,0 +1,53 @@
+// Classes and mixins to help with hiding and showing elements
+
+.hide-text
+{
+ text-indent: 100%;
+ white-space: nowrap;
+ overflow: hidden;
+}
+
+// Source: Foundation 5
+// -------------------------------------------------------------------------------------------------
+
+.hide
+{
+  display: none;
+}
+
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+.hide-for-small-only,
+.show-for-medium-up
+{
+  @include element-invisible;
+  @include breakpoint($medium-up)
+  {
+    @include element-invisible-off;
+    display: inherit;
+  }
+};
+
+.show-for-all
+{
+  @include element-invisible-off;
+}
+
+

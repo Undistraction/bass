@@ -1,0 +1,7 @@
+// Set box-sizing globally to handle padding and border widths
+*,
+*:before,
+*:after
+{
+  @include box-sizing(border-box);
+}

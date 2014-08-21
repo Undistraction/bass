@@ -1,0 +1,18 @@
+.AlertBox
+{
+  p,
+  .Icon
+  {
+    color: color-for(loud, text-color);
+  }
+
+  &--success
+  {
+    background-color: color-for(success-color);
+  }
+
+  &--alert
+  {
+    background-color: color-for(warning-color);
+  }
+}

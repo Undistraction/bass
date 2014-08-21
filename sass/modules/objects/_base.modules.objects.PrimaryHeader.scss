@@ -1,0 +1,24 @@
+.PrimaryHeader
+{
+  @include full;
+  position:relative;
+
+  .PrimaryHeader-Title
+  {
+    @include margin-trailer(0.5);
+  }
+
+  .PrimaryHeader-Subtitle
+  {
+    @include adjust-font-size-to(type-scale(base), 1);
+    text-align: center;
+    color: color-for(default, default, text-color-quiet)
+  }
+
+  h1+.Subtitle
+  {
+    @include margin-leader(0);
+  }
+
+  @include margin-trailer(0.5);
+}

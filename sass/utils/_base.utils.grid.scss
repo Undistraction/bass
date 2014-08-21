@@ -1,0 +1,9 @@
+// Grid mixins for use with Susy Next
+
+@mixin span-centered($columns)
+{
+  width: span($columns);
+  clear: both;
+  float: none;
+  margin: 0 auto !important;
+}

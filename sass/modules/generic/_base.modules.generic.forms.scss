@@ -1,0 +1,116 @@
+/* We use this to get basic styling on all basic form elements */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  border: none !important;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  color: color-for(forms, default, text-color);
+}
+
+input[type="submit"] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+/* Respect enforced amount of rows for textarea */
+textarea[rows] {
+  height: auto;
+}
+
+/* Adjust margin for form elements below */
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+  margin: 0;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline-block;
+  margin-right: rem-calc(10);
+  margin-bottom: 0;
+  vertical-align: baseline;
+}
+
+/* Normalize file input width */
+input[type="file"] {
+  width:100%;
+}
+
+form
+{
+  @include margin-trailer;
+}
+
+input,
+label
+{
+  display: block;
+  width: 100%;
+}
+
+input,
+textarea
+{
+  padding-left: h-rhythm(0.5);
+  padding-right: h-rhythm(0.5);
+}
+
+input
+{
+  @include adjust-font-size-to(type-scale(base), 2);
+}
+
+textarea
+{
+  @include padding-leader(0.5);
+  @include padding-trailer(0.5);
+  height: auto;
+}
+
+label
+{
+  @include adjust-font-size-to(type-scale(base), 1);
+  @include margin-trailer(0.5);
+}
+
+input,
+textarea
+{
+  background: color-for(forms, input, background-color);
+}
+
+input[type=email],
+input[type=password],
+input[type=text],
+textarea
+{
+  border-radius: rem-calc(6);
+  @include inset-shadow;
+}
+
+input[type=checkbox],
+input[type=radio]
+{
+  width: auto;
+  margin-right: h-rhythm(0.5);
+}
+
+textarea
+{
+  width: 100%;
+  max-width: 100%;
+}

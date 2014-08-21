@@ -1,0 +1,34 @@
+// Classes and mixins to help with layout
+
+@mixin center-known {
+  margin: 0 auto;
+}
+
+@mixin center-contents {
+  text-align: center;
+}
+
+.left
+{
+  clear: left !important;
+}
+
+.right
+{
+  clear: right !important;
+}
+
+.clearfix
+{
+  @include clearfix;
+}
+
+.center-contents
+{
+   @include center-contents();
+}
+
+.center-known
+{
+   @include center-known();
+}

@@ -1,0 +1,8 @@
+// type-scale allows you to register and retrieve nested objects containing the size in pixels for
+// the given named value at the current breakpoint ( small, base, medium, large, x-large etc )
+
+$type-scale-map: ();
+
+@function type-scale($position, $breakpoint: default) {
+  @return rem-calc(map-get-deep($type-scale-map, $breakpoint, $position));
+}

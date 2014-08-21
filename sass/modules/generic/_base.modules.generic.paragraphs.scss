@@ -1,0 +1,14 @@
+p
+{
+  font-family: $default-font-family;
+  line-height: inherit;
+  margin: 0;
+  @include margin-trailer(1);
+  @include adjust-font-size-to(type-scale(base));
+  color: color-for(default, default, text-color);
+}
+
+%WithMaxMeasure
+{
+  max-width: $defaults-max-measure;
+}

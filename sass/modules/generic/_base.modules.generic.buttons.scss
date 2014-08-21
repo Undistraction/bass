@@ -1,0 +1,33 @@
+%button
+{
+  @include adjust-font-size-to(type-scale(base), 1);
+  padding: v-rhythm(0.5) h-rhythm(0.5);
+  display: block;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  -webkit-border-radius:0;
+}
+
+button,
+.button
+{
+  @extend %button;
+  color: white;
+  background-color: $defaults-ui-background-color;
+
+  &:hover,
+  &:focus
+  {
+    background-color: $defaults-ui-background-color-hover;
+  }
+
+  &.disabled
+  {
+    opacity: $defaults-disabled-opacity;
+    cursor: not-allowed;
+  }
+}

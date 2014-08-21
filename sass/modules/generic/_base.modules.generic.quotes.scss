@@ -1,0 +1,14 @@
+blockquote
+{
+  margin: 0;
+  padding: 0;
+}
+
+cite
+{
+  font-style: italic;
+  &:before
+  {
+    content: "\2014 \00A0";
+  }
+}

@@ -1,0 +1,15 @@
+// z-index allows the creation of nested objects containing z-index values.
+
+$z-index-map: () !default;
+
+// Constants
+$z-index-bottom: 0;
+$z-index-top: 9999999;
+
+@function layer-z-index($layer, $context) {
+  @return map-get-deep($z-index-map, $context, $layer);
+}
+
+@mixin z-index($layer, $context:page) {
+  z-index: layer-z-index($layer, $context);
+}
