@@ -1,0 +1,10 @@
+// Source: [Bourbon](https://github.com/thoughtbot/bourbon/blob/502c2108dea1970ffeb4f91cb95b545d67bddfd0/app/assets/stylesheets/)addons/_clearfix.scss
+// Original Source: // Beat *that* clearfix: [Thierry Koblentz](http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php)
+
+@mixin clearfix {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
