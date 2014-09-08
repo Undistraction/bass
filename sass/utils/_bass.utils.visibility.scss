@@ -34,16 +34,16 @@
   clip: auto;
 }
 
-.hide-for-small-only,
-.show-for-medium-up
-{
-  @include element-invisible;
-  @include breakpoint($medium-up)
-  {
-    @include element-invisible-off;
-    display: inherit;
-  }
-};
+// .hide-for-small-only,
+// .show-for-medium-up
+// {
+//   @include element-invisible;
+//   @include breakpoint($medium-up)
+//   {
+//     @include element-invisible-off;
+//     display: inherit;
+//   }
+// };
 
 .show-for-all
 {
