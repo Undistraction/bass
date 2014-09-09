@@ -1,7 +1,7 @@
 %button
 {
   @include adjust-font-size-to(type-scale(base), 1);
-  padding: v-rhythm(0.5) h-rhythm(0.5);
+  padding: v-rhythm(2) h-rhythm(0.5);
   display: block;
   border: none;
   cursor: pointer;
