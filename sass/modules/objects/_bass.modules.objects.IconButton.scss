@@ -11,7 +11,7 @@
 
 .IconButton-Label
 {
-  @extend .hide-for-small-only;
+  //@extend .hide-for-small-only;
   margin-left: h-rhythm(0.3);
   // @include breakpoint($medium-up) {
   //   display: inline-block;
