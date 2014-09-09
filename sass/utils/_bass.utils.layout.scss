@@ -18,7 +18,8 @@
   clear: right !important;
 }
 
-.clearfix
+.clearfix,
+%clearfix
 {
   @include clearfix;
 }
