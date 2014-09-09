@@ -2,8 +2,8 @@ a
 {
   text-decoration: none;
   color: color-for(default, link, text-color);
-  @include transition(background-color 0.4s ease-in-out);
-  @include transition(color 0.4s ease-in-out);
+  transition: background-color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out;
 
   &:hover,
   &:focus
