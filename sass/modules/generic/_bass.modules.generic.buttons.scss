@@ -11,13 +11,7 @@
   text-align: center;
   -webkit-appearance: none;
   -webkit-border-radius:0;
-}
-
-button,
-.button
-{
-  @extend %button;
-  color: white;
+  color: $ui-color;
   background-color: $ui-background-color;
 
   &:hover,
@@ -31,4 +25,15 @@ button,
     opacity: $disabled-opacity;
     cursor: not-allowed;
   }
+
+  .Icon
+  {
+    @include adjust-font-size-to(type-scale(base), 2);
+  }
+
+}
+
+button
+{
+  @extend %button;
 }
