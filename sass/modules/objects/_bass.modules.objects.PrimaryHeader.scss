@@ -1,6 +1,7 @@
 .PrimaryHeader
 {
-  @include full;
+  //@include full;
+  width: 100%;
   position:relative;
 
   .PrimaryHeader-Title
