@@ -40,7 +40,7 @@ select {
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
-  margin-right: rem-calc(10);
+  margin-right: 10px;
   margin-bottom: 0;
   vertical-align: baseline;
 }
@@ -98,7 +98,7 @@ input[type=password],
 input[type=text],
 textarea
 {
-  border-radius: rem-calc(6);
+  border-radius: 6px;
   @include inset-shadow;
 }
 

@@ -4,5 +4,5 @@
 $type-scale-map: ();
 
 @function type-scale($position, $breakpoint: default) {
-  @return rem-calc(map-get-deep($type-scale-map, $breakpoint, $position));
+  @return map-get-deep($type-scale-map, $breakpoint, $position);
 }
