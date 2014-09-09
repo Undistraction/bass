@@ -1,12 +1,11 @@
 {
-  "name": "Bass",
+  "name": "bass",
   "version": "0.0.6",
   "homepage": "https://github.com/Undistraction/bass",
   "authors": [
     "Pedr Browne <pedr.browne@gmail.com>"
   ],
   "description": "Personal Sass Toolkit",
-  "main": "sass/*",
   "keywords": [
     "sass"
   ],
