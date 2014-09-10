@@ -40,7 +40,7 @@ select {
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
-  margin-right: 10px;
+  margin-left: h-rhythm(0.5);;
   margin-bottom: 0;
   vertical-align: baseline;
 }
