@@ -1,8 +1,7 @@
-
 // For use in media queries
 // Media queries don't pay attention to the html element's body size and always go with the browser default (16px)
-@function default-em-calc($values) {
-  @return em-calc($values, 16);
+@function root-em($values) {
+  @return em($values, 16);
 }
 
 // Source: Foundation 4
@@ -10,7 +9,7 @@
 
 // This is the old em-calc function from Foundation 4
 // The new em-calc function in Foundation 5 inexpicably delegates to rem-calc
-@function em-calc($values, $base-value: $rem-base) {
+@function em($values, $base-value: $rem-base) {
     $max: length($values); // Get the total number of parameters passed
 
     // If there is only 1 parameter, then return it as an integer.
@@ -28,7 +27,7 @@
 // Source: Foundation 5
 // -------------------------------------------------------------------------------------------------
 
-@function rem-calc($values, $base-value: $rem-base) {
+@function rem($values, $base-value: $rem-base) {
   $max: length($values);
 
   @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
