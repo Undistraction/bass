@@ -5,7 +5,7 @@ p
   margin: 0;
   @include margin-trailer(1);
   @include adjust-font-size-to(type-scale(base));
-  color: color-for(default, default, text-color);
+  color: c(default, default, text-color);
 }
 
 %WithMaxMeasure

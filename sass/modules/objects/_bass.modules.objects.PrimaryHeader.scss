@@ -13,7 +13,7 @@
   {
     @include adjust-font-size-to(type-scale(base), 1);
     text-align: center;
-    color: color-for(default, default, text-color-quiet)
+    color: c(default, default, text-color-quiet)
   }
 
   h1+.Subtitle

@@ -3,16 +3,16 @@
   p,
   .Icon
   {
-    color: color-for(loud, text-color);
+    color: c(loud, text-color);
   }
 
   &--success
   {
-    background-color: color-for(success-color);
+    background-color: c(success-color);
   }
 
   &--alert
   {
-    background-color: color-for(warning-color);
+    background-color: c(warning-color);
   }
 }

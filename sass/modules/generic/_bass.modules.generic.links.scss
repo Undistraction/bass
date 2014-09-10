@@ -1,25 +1,25 @@
 a
 {
   text-decoration: none;
-  color: color-for(default, link, text-color);
+  color: c(default, link, text-color);
   transition: background-color 0.4s ease-in-out;
   transition: color 0.4s ease-in-out;
 
   &:hover,
   &:focus
   {
-    color: color-for(default, link, hover, text-color);
+    color: c(default, link, hover, text-color);
   }
 
   .active &
   {
-    color: color-for(default, link, active, text-color);
+    color: c(default, link, active, text-color);
   }
 
   &.disabled,
   &.disabled:hover
   {
-    color: color-for(default, link, disabled, text-color) !important;
+    color: c(default, link, disabled, text-color) !important;
     opacity:0.2;
   }
 

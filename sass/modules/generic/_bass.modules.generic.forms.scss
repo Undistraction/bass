@@ -16,7 +16,7 @@ textarea {
   border: none !important;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
-  color: color-for(forms, default, text-color);
+  color: c(forms, default, text-color);
 }
 
 input[type="submit"] {
@@ -90,7 +90,7 @@ label
 input,
 textarea
 {
-  background: color-for(forms, input, background-color);
+  background: c(forms, input, background-color);
 }
 
 input[type=email],

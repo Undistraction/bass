@@ -1,0 +1,12 @@
+Searching 45 files for "rem("
+
+/Users/pedr/Documents/Work/Projects/Code/Sass/Bass/sass/functions/_bass.functions.size-calculations.scss:
+   30: @function rem($values, $base-value: $rem-base) {
+   33:   @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+   37:     $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+   46: @function convert-to-rem($value, $base-value: $rem-base)  {
+
+/Users/pedr/Documents/Work/Projects/Code/Sass/Bass/sass/modules/generic/_bass.modules.generic.forms.scss:
+   43:   margin-right: rem(10);
+
+5 matches across 2 files

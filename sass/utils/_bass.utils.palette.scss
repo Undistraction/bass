@@ -2,7 +2,7 @@
 
 $palette-map: ();
 
-@function color-for($palette-path...) {
+@function c($palette-path...) {
   @return map-get-deep($palette-map, $palette-path);
 }
 
