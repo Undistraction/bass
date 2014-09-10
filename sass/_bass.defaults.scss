@@ -1,21 +1,21 @@
-$default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-$base-font-size: 16px;
-$base-line-size: 20.8px;
+$default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$base-font-size: 16px !default;
+$base-line-size: 20.8px !default;
 
-$header-font-family: $default-font-family;
-$header-font-weight: normal;
-$header-font-style: normal;
+$header-font-family: $default-font-family  !default;
+$header-font-weight: normal !default;
+$header-font-style: normal !default;
 
-$color-primary: black;
+$color-primary: black !default;
 
-$ui-color: white;
-$ui-background-color: $color-primary;
-$ui-background-color-hover: lighten($color-primary, 10);
+$ui-color: white !default;
+$ui-background-color: $color-primary !default;
+$ui-background-color-hover: lighten($color-primary, 10) !default;
 
-$disabled-opacity: 0.7;
+$disabled-opacity: 0.7 !default;
 
-$border: solid 1px darken(white, 10);
+$border: solid 1px darken(white, 10) !default;
 
-$max-measure: 36em;
+$max-measure: 36em !default;
 
-$unit-of-horizontal-rhythm: rem(10);
+$unit-of-horizontal-rhythm: rem(10) !default;
