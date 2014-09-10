@@ -3,7 +3,7 @@
 $palette-map: ();
 
 @function c($palette-path...) {
-  @debug($palette-path);
+  @debug "Requested #{$palette-path}";
   @return map-get-deep($palette-map, $palette-path);
 }
 
