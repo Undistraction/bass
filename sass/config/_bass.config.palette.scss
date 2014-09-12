@@ -1,0 +1,47 @@
+@include register-palette(default,
+  (
+    default:
+    (
+      background-color:       white,
+      text-color:             black,
+      text-color-quiet:       lighten(black, 15),
+      title-color:            black,
+      divider-color:          darken(white, 2)
+    ),
+
+    link:
+    (
+      text-color:             black,
+      text-color-quiet:       lighten( black, 20),
+      hover:
+      (
+        text-color:           lighten( black, 10),
+      ),
+      disabled:
+      (
+        text-color:           desaturate( black, 20),
+      ),
+      active:
+      (
+        text-color: lighten( black, 20)
+      )
+    ),
+
+    button:
+    (
+      text-color:             white,
+      background-color:       black,
+      hover:
+      (
+        text-color:           darken(white, 20),
+        background-color:     lighten( black, 15)
+      )
+    )
+  )
+);
+
+
+$color-primary: black !default;
+$ui-color: white !default;
+$ui-background-color: $color-primary !default;
+$ui-background-color-hover: lighten($color-primary, 10) !default;
