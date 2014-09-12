@@ -3,6 +3,7 @@
   @include adjust-font-size-to(type-scale(base), 2);
   padding-left: h-rhythm(0.5);
   padding-right: h-rhythm(0.5);
+  display: block;
   border: none;
   cursor: pointer;
   position: relative;
