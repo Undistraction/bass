@@ -3,16 +3,15 @@
 $palette-map: ();
 
 @function c($palette-path...) {
-  @debug "Requested #{$palette-path}";
   @return map-get-deep($palette-map, $palette-path);
 }
 
 // If no name is given, the values in $palette are added to $palette map's top level
 @function register-palette($name:null, $palette:null) {
   @if $name {
-    $palette-map: map-merge($palette-map, ($name: $palette));
+    $palette-map: map-merge($palette-map, ($name: $palette)) !global;
   }@else{
-    $palette-map: map-merge($palette-map, $palette);
+    $palette-map: map-merge($palette-map, $palette) !global;
   }
   @return none;
 }
