@@ -17,3 +17,5 @@ $relative-font-sizing : false !default;
 $min-line-padding: 0 !default;
 @include establish-baseline;
 // End
+
+$unit-of-horizontal-rhythm: rhythm(); // Here we are using the same unit as the vertical
