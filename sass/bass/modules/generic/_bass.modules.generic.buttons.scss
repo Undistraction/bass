@@ -11,13 +11,13 @@
   text-align: center;
   -webkit-appearance: none;
   -webkit-border-radius:0;
-  color: $ui-color;
-  background-color: $ui-background-color;
+  color: c(default, button, text-color);
+  background-color: c(default, button, background-color);
 
   &:hover,
   &:focus
   {
-    background-color: $ui-background-color-hover;
+    background-color: c(default, button, hover, background-color);
   }
 
   &.disabled

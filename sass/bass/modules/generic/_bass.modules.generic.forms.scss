@@ -90,7 +90,7 @@ label
 input,
 textarea
 {
-  background: c(forms, input, background-color);
+  background: c(default, form, input, background-color);
 }
 
 input[type=email],
