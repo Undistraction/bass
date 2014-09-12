@@ -1,0 +1,10 @@
+@mixin Placeholder($name, $min-width, $min-height: 0){
+  background-color: #DDD;
+  min-width: $min-width;
+  min-height: $min-height;
+  padding: v-rhythm() h-rhythm();
+  &::after
+  {
+    content: $name;
+  }
+}
