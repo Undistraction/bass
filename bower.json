@@ -10,6 +10,7 @@
     "sass"
   ],
   "license": "MIT",
+  "main": "sass/_bass.scss",
   "ignore": [
     "**/.*",
     "node_modules",

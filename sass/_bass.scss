@@ -1,0 +1,9 @@
+// Manifest.
+// Don't import this file. Just cherrypick what you need.
+@import 'config/*';
+@import 'decorations/*';
+@import 'functions/*';
+@import 'utils/*';
+@import 'modules/bass.modules.reset';
+@import 'modules/bass.modules.generic';
+@import 'modules/bass.modules.objects';
