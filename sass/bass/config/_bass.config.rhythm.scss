@@ -6,9 +6,10 @@ $rhythm-map: (
     base-font-size: $base-font-size,
     base-line-height: $base-font-size * 1.357142857
   )
-)
+);
 
 // Compass Vertical Rhythm configration
+
 $base-line-height: 20.8px !default;
 $round-to-nearest-half-line: true !default;
 $rhythm-unit: 'rem' !default;
