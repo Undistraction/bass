@@ -1,4 +1,4 @@
-$base-font-size: 16px !default;
+$base-font-size: 16px;
 $rem-base: $base-font-size;
 
 $rhythm-map: (
@@ -10,11 +10,11 @@ $rhythm-map: (
 
 // Compass Vertical Rhythm configration
 
-$base-line-height: 20.8px !default;
-$round-to-nearest-half-line: true !default;
-$rhythm-unit: 'rem' !default;
-$relative-font-sizing : false !default;
-$min-line-padding: 0 !default;
+$base-line-height: 20.8px;
+$round-to-nearest-half-line: true;
+$rhythm-unit: 'rem';
+$relative-font-sizing : false;
+$min-line-padding: 0;
 @include establish-baseline;
 // End
 
