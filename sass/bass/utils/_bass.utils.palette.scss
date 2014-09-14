@@ -8,10 +8,11 @@ $palette-map: ();
 
 // If no name is given, the values in $palette are added to $palette map's top level
 @function register-palette($name:null, $palette:null) {
+  // Merge, overriding existing values
   @if $name {
-    $palette-map: map-merge($palette-map, ($name: $palette)) !global;
+    $palette-map: map-merge-deep($palette-map, ($name: $palette)) !global;
   }@else{
-    $palette-map: map-merge($palette-map, $palette) !global;
+    $palette-map: map-merge-deep($palette-map, $palette) !global;
   }
   @return none;
 }
