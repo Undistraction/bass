@@ -1,13 +1,20 @@
-$default-footer-height: rem(200) !default;
+// Sticky Footer
+// Source: http://ryanfait.com/sticky-footer/layout.css
+//
+// !important: This Sticky footer relies on a known height for the footer
+// For a responsive sticky footer use the table technique or JavaScript
+//--------------------------------------------------------------------------------------------------
+
+$default-footer-height: rem(100) !default;
 
 .StickyFooter-contentWrapper {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto; // the bottom margin is the negative value of the footer's height
+  margin: 0 auto (-$default-footer-height); // the bottom margin is the negative value of the footer's height
 }
 
-.StickyFooter-push {
-  height: $default-footer-height; // '.push' must be the same height as 'footer'
-  @include padding-trailer(1);
+.StickyFooter-push,
+.Page-footer {
+  height: $default-footer-height;
 }
