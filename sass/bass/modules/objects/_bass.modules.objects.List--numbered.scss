@@ -1,0 +1,6 @@
+.List--numbered {
+  font-size: type-scale(base);
+  line-height: inherit;
+  list-style: decimal;
+  margin-left: h-rhythm();
+}

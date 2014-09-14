@@ -1,4 +1,6 @@
-.HorizontalList {
+.List--horizontal {
+  @include clearfix;
+
   li
   {
     @include clearfix;
