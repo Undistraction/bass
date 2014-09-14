@@ -7,7 +7,7 @@
   @include font-smoothing(on);
 }
 
-.PageFooter
+.Page-footer
 {
   height: $default-footer-height;
   // You must be sure that your footer is also styled to adopt this height, or hav ethis
@@ -38,9 +38,4 @@ h3.SectionHeading
 p+h3.SectionHeading
 {
   padding-top: 0;
-}
-
-p.WithMaxMeasure
-{
-  @extend %WithMaxMeasure;
 }

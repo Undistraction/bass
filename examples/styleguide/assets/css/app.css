@@ -615,7 +615,7 @@ p {
   line-height: inherit;
   color: black; }
 
-p, blockquote, p.WithMaxMeasure {
+p, blockquote {
   max-width: 40em; }
 
 blockquote {
@@ -728,7 +728,7 @@ th {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.PageFooter {
+.Page-footer {
   height: 3.125rem; }
 
 .Page-body {
