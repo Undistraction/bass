@@ -2,12 +2,8 @@ img {
   display: inline-block;
   vertical-align: middle; // Remove whitespace
   margin: 0;
-
-  &.ResponsiveImage
-  {
-    max-width: 100%;
-    height: auto;
-  }
+  max-width: 100%;
+  height: auto;
 }
 
 figure > img

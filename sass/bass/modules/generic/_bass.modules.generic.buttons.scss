@@ -13,22 +13,30 @@
   color: c(default, button, text-color);
   background-color: c(default, button, background-color);
 
+  &.is-active {
+    color: c(default, button, active, text-color);
+    background-color: c(default, button, active, background-color);
+  }
+
+  &.is-disabled,
+  &.is-disabled:hover {
+    opacity: $disabled-opacity;
+    cursor: not-allowed;
+    color: c(default, button, disabled, text-color);
+    background-color: c(default, button, disabled, background-color);
+  }
+
   &:hover,
   &:focus {
     background-color: c(default, button, hover, background-color);
   }
 
-  &.disabled {
-    opacity: $disabled-opacity;
-    cursor: not-allowed;
-  }
-
   .Icon {
     @include adjust-font-size-to(type-scale(base), 2);
   }
-
 }
 
-button {
+button,
+input[type="submit"] {
   @extend %button;
 }

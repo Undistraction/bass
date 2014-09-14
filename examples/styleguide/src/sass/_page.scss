@@ -1,0 +1,40 @@
+.Page-footer,
+.Page-header {
+  background: black;
+  color: white;
+  padding: rem(30);
+  text-align: center;
+  @include font-smoothing(on);
+}
+
+.Page-body
+{
+  max-width: rem(1200);
+  margin: 0 auto;
+  padding: rem(20 20 50);
+}
+
+.SectionHeading
+{
+  font-size: rem(18);
+  text-transform: uppercase;
+  padding: rem(30 0 20);
+  color: #DDD;
+}
+
+h3.SectionHeading
+{
+  font-size: rem(14);
+  text-transform: none;
+}
+
+.SectionHeading+.SectionHeading,
+p+h3.SectionHeading
+{
+  padding-top: 0;
+}
+
+p.WithMaxMeasure
+{
+  @extend %WithMaxMeasure;
+}

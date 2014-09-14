@@ -10,13 +10,13 @@ a {
     color: c(default, link, hover, text-color);
   }
 
-  .active &
+  &.is-active
   {
     color: c(default, link, active, text-color);
   }
 
-  &.disabled,
-  &.disabled:hover
+  &.is-disabled,
+  &.is-disabled:hover
   {
     color: c(default, link, disabled, text-color) !important;
     opacity:0.2;
