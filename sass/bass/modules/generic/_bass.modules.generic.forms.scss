@@ -1,3 +1,23 @@
+/* Adjust margin for form elements below */
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 0;
+}
+
+input,
+textarea,
+select
+{
+  @include margin-trailer(1);
+}
+
+/* Override normalize */
+input[type="search"] {
+  box-sizing: border-box;
+}
+
+
 /* We use this to get basic styling on all basic form elements */
 input[type="text"],
 input[type="password"],
@@ -16,7 +36,21 @@ textarea {
   border: none !important;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
-  color: c(forms, default, text-color);
+  color: c(default, text-color);
+  border-radius: 6px;
+  @include inset-shadow;
+  background: c(default, form, input, background-color);
+}
+
+select
+{
+  border: $border;
+  width: 100%;
+  @include adjust-font-size-to(type-scale(base), 2);
+  padding: 0 h-rhythm(0.5);
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
 }
 
 input[type="submit"] {
@@ -29,18 +63,12 @@ textarea[rows] {
   height: auto;
 }
 
-/* Adjust margin for form elements below */
-input[type="file"],
-input[type="checkbox"],
-input[type="radio"],
-select {
-  margin: 0;
-}
+
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   display: inline-block;
-  margin-left: h-rhythm(0.5);;
+  margin-left: h-rhythm(0.5);
   margin-bottom: 0;
   vertical-align: baseline;
 }
@@ -81,23 +109,19 @@ label {
   @include margin-trailer(0.5);
 }
 
-input,
-textarea {
-  background: c(default, form, input, background-color);
-}
 
-input[type=email],
-input[type=password],
-input[type=text],
-textarea {
-  border-radius: 6px;
-  @include inset-shadow;
-}
 
 input[type=checkbox],
 input[type=radio] {
+  display: inline-block;
   width: auto;
-  margin-right: h-rhythm(0.5);
+  @include margin-trailer(1);
+
+  &+label
+  {
+    display: inline-block;
+    width: auto;
+  }
 }
 
 textarea {
