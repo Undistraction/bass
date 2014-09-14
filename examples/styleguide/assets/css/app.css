@@ -714,11 +714,10 @@ th {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -6.25rem; }
+  margin: 0 auto -3.125rem; }
 
-.StickyFooter-push,
-.Page-footer {
-  height: 6.25rem; }
+.StickyFooter-push {
+  height: 3.125rem; }
 
 .Page-footer,
 .Page-header {
@@ -728,6 +727,9 @@ th {
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.PageFooter {
+  height: 3.125rem; }
 
 .Page-body {
   max-width: 75rem;

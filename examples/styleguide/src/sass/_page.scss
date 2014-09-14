@@ -7,6 +7,12 @@
   @include font-smoothing(on);
 }
 
+.PageFooter
+{
+  height: $default-footer-height;
+  // You must be sure that your footer is also styled to adopt this height, or hav ethis
+}
+
 .Page-body
 {
   max-width: rem(1200);

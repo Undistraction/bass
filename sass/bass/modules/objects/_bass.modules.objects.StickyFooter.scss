@@ -5,7 +5,9 @@
 // For a responsive sticky footer use the table technique or JavaScript
 //--------------------------------------------------------------------------------------------------
 
-$default-footer-height: rem(100) !default;
+// You must be sure that your footer is also styled to adopt this height, or have this height reflect
+// your footer's height
+$default-footer-height: rem(50) !default;
 
 .StickyFooter-contentWrapper {
   min-height: 100%;
@@ -14,7 +16,8 @@ $default-footer-height: rem(100) !default;
   margin: 0 auto (-$default-footer-height); // the bottom margin is the negative value of the footer's height
 }
 
-.StickyFooter-push,
-.Page-footer {
+.StickyFooter-push
+{
   height: $default-footer-height;
 }
+
