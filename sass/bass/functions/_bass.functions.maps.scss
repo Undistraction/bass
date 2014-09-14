@@ -1,4 +1,4 @@
-@function map-merge-deep($map-old, $map-new, $overwrite: true){
+@function map-merge-deep($map-old, $map-new, $overwrite: true) {
   // Iterate through each value of the new map
   @each $key, $new-value in $map-new {
     // Check if that value already exists on the old map

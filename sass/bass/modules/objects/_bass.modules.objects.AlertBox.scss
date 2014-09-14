@@ -1,18 +1,14 @@
-.AlertBox
-{
+.AlertBox {
   p,
-  .Icon
-  {
+  .Icon {
     color: c(loud, text-color);
   }
 
-  &--success
-  {
+  &--success {
     background-color: c(success-color);
   }
 
-  &--alert
-  {
+  &--alert {
     background-color: c(warning-color);
   }
 }

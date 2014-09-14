@@ -1,5 +1,4 @@
-%button
-{
+%button {
   @include adjust-font-size-to(type-scale(base), 2);
   padding-left: h-rhythm(0.5);
   padding-right: h-rhythm(0.5);
@@ -15,25 +14,21 @@
   background-color: c(default, button, background-color);
 
   &:hover,
-  &:focus
-  {
+  &:focus {
     background-color: c(default, button, hover, background-color);
   }
 
-  &.disabled
-  {
+  &.disabled {
     opacity: $disabled-opacity;
     cursor: not-allowed;
   }
 
-  .Icon
-  {
+  .Icon {
     @include adjust-font-size-to(type-scale(base), 2);
   }
 
 }
 
-button
-{
+button {
   @extend %button;
 }

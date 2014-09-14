@@ -1,4 +1,4 @@
-@mixin triangle($point, $colour){
+@mixin triangle( $point, $colour ) {
   $adjacent: opposite-position($point);
   border: 100px solid transparent;
   border-#{$adjacent}: 100px solid $colour;

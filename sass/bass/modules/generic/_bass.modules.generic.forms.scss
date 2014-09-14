@@ -50,67 +50,57 @@ input[type="file"] {
   width:100%;
 }
 
-form
-{
+form {
   @include margin-trailer;
 }
 
 input,
-label
-{
+label {
   display: block;
   width: 100%;
 }
 
 input,
-textarea
-{
+textarea {
   padding-left: h-rhythm(0.5);
   padding-right: h-rhythm(0.5);
 }
 
-input
-{
+input {
   @include adjust-font-size-to(type-scale(base), 2);
 }
 
-textarea
-{
+textarea {
   @include padding-leader(0.5);
   @include padding-trailer(0.5);
   height: auto;
 }
 
-label
-{
+label {
   @include adjust-font-size-to(type-scale(base), 1);
   @include margin-trailer(0.5);
 }
 
 input,
-textarea
-{
+textarea {
   background: c(default, form, input, background-color);
 }
 
 input[type=email],
 input[type=password],
 input[type=text],
-textarea
-{
+textarea {
   border-radius: 6px;
   @include inset-shadow;
 }
 
 input[type=checkbox],
-input[type=radio]
-{
+input[type=radio] {
   width: auto;
   margin-right: h-rhythm(0.5);
 }
 
-textarea
-{
+textarea {
   width: 100%;
   max-width: 100%;
 }

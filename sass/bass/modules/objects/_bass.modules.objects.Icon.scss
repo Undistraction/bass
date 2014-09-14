@@ -1,10 +1,8 @@
-.Icon
-{
+.Icon {
   opacity: 0.5;
   margin-right: h-rhythm(0.5);
 
-  &:only-child
-  {
+  &:only-child {
     opacity:1;
     margin-right: 0;
   }

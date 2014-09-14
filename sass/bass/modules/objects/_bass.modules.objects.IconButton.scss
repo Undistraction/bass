@@ -1,16 +1,13 @@
 .IconButton-Label,
-.IconButton-Icon
-{
+.IconButton-Icon {
   @include adjust-font-size-to(type-scale(base));
 }
 
-.IconButton-Icon
-{
+.IconButton-Icon {
   margin-right: 0;
 }
 
-.IconButton-Label
-{
+.IconButton-Label {
   //@extend .hide-for-small-only;
   margin-left: h-rhythm(0.3);
   // @include breakpoint($medium-up) {

@@ -1,7 +1,7 @@
 // Source: Foundation 5
 // -------------------------------------------------------------------------------------------------
 
-@function lower-bound($range){
+@function lower-bound($range) {
   @if length($range) <= 0 {
     @return 0;
   }
