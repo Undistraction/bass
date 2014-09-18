@@ -1,11 +1,23 @@
+//
 // Classes and mixins to help with layout
+// -------------------------------------------------------------------------------------------------
 
 @mixin center-known {
   margin: 0 auto;
 }
 
+.center-known
+{
+   @include center-known();
+}
+
 @mixin center-contents {
   text-align: center;
+}
+
+.center-contents
+{
+   @include center-contents();
 }
 
 .left
@@ -16,20 +28,4 @@
 .right
 {
   clear: right !important;
-}
-
-.clearfix,
-%clearfix
-{
-  @include clearfix;
-}
-
-.center-contents
-{
-   @include center-contents();
-}
-
-.center-known
-{
-   @include center-known();
 }

@@ -1,4 +1,6 @@
+//
 // Offset positioning helpers
+//
 // Source: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/
 // -------------------------------------------------------------------------------------------------
 
@@ -29,14 +31,7 @@
   }
 }
 
-// Function checking if $value is a valid length
-
-@function position-is-valid-length($value) {
-  @return (type-of($value) == "number" and not unitless($value))
-       or (index(auto initial inherit 0, $value) != false);
-}
-
-// Shorthands
+// Shorthand
 
 @mixin absolute($args: ()) {
   @include position(absolute, $args);
@@ -49,3 +44,12 @@
 @mixin relative($args: ()) {
   @include position(relative, $args);
 }
+
+// Function checking if $value is a valid length
+
+@function position-is-valid-length($value) {
+  @return (type-of($value) == "number" and not unitless($value))
+       or (index(auto initial inherit 0, $value) != false);
+}
+
+

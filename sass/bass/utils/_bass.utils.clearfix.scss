@@ -1,5 +1,8 @@
-// Source: [Bourbon](https://github.com/thoughtbot/bourbon/blob/502c2108dea1970ffeb4f91cb95b545d67bddfd0/app/assets/stylesheets/)addons/_clearfix.scss
-// Original Source: // Beat *that* clearfix: [Thierry Koblentz](http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php)
+//
+// Modern Clearfix
+//
+// Source: [Bourbon](http://goo.gl/WXFG1F)
+// -------------------------------------------------------------------------------------------------
 
 @mixin clearfix {
   &:after {
@@ -7,4 +10,8 @@
     display: table;
     clear: both;
   }
+}
+
+%clearfix{
+  @include clearfix;
 }

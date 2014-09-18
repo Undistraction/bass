@@ -1,21 +1,32 @@
-$base-font-size: 16px;
-$rem-base: $base-font-size;
+//
+// Default rhythm settings
+// -------------------------------------------------------------------------------------------------
 
 $rhythm-map: (
   default:(
-    base-font-size: $base-font-size,
-    base-line-height: $base-font-size * 1.357142857
+    base-font-size: 16px,
+    base-line-height: 22px
   )
 );
 
-// Compass Vertical Rhythm configration
+// Vertical Rhythm
+// -------------------------------------------------------------------------------------------------
 
-$base-line-height: 20.8px;
+// Vertical Rhythm configration
+$base-font-size: get-rhythm(base-font-size);
+$base-line-height: get-rhythm(base-line-height);
 $round-to-nearest-half-line: true;
 $rhythm-unit: 'rem';
 $relative-font-sizing : false;
 $min-line-padding: 0;
 @include establish-baseline;
-// End
+
+// Rem Conversion
+// -------------------------------------------------------------------------------------------------
+
+$rem-base: $base-font-size;
+
+// Horizontal Rhythm
+// -------------------------------------------------------------------------------------------------
 
 $unit-of-horizontal-rhythm: rhythm(); // Here we are using the same unit as the vertical

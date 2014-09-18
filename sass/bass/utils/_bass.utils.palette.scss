@@ -1,11 +1,15 @@
+//
 // Palette Map allows you to register and retrieve nested objects containing color palettes
+// -------------------------------------------------------------------------------------------------
 
 $palette-map: ();
 
+// Look up a color value in the palette map
 @function c($palette-path...) {
   @return map-get-deep($palette-map, $palette-path);
 }
 
+// Register a palette to make it available using the c() function
 // If no name is given, the values in $palette are added to $palette map's top level
 @function register-palette($name:null, $palette:null) {
   // Merge, overriding existing values

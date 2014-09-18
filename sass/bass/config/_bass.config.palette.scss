@@ -1,3 +1,9 @@
+//
+// Default palette
+//
+// You can override any of these values by registering a palette of the same name.
+// -------------------------------------------------------------------------------------------------
+
 @include register-palette(default,
   (
     default:
@@ -5,6 +11,7 @@
       background-color:       white,
       text-color:             black,
       text-color-quiet:       lighten(black, 15),
+      text-color-loud:        white,
       title-color:            black,
       divider-color:          darken(white, 2)
     ),
@@ -47,6 +54,7 @@
         background-color: lighten( black, 15)
       )
     ),
+
     form:(
       input:
       (

@@ -1,7 +1,10 @@
+//
 // Access the appropriate rhythm for the given breakpoint
+// -------------------------------------------------------------------------------------------------
 
-@function get-rhythm($breakpoint:default) {
-  @return map-get($rhythm-map, $breakpoint);
+// Lookup rhythm values for the given $breakpoint
+@function get-rhythm($property, $breakpoint:default) {
+  @return map-get-deep($rhythm-map, $breakpoint, $property);
 }
 
 // Use a different baseline for a block of content then reset the baseline afterwards
@@ -9,12 +12,11 @@
 // mixin adapted from the following pull request https://github.com/chriseppstein/compass/pull/1352
 // See https://github.com/Compass/compass/issues/1487
 // See http://sassmeister.com/gist/7992795
-
 @mixin use-baseline($breakpoint) {
 
-   $rhythm: get-rhythm($breakpoint);
-   $new-base-size: map-get($rhythm, base-font-size);
-   $new-line-height: map-get($rhythm, base-line-height);
+   // Get rhythm values for this $breakpoint
+   $new-base-size: get-rhythm(base-font-size, $breakpoint);
+   $new-line-height: get-rhythm(base-line-height, $breakpoint);
 
    // Save the baseline context
    $initial-font-size: $base-font-size;

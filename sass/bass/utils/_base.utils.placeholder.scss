@@ -1,3 +1,8 @@
+//
+// Placeholder mixins
+// -------------------------------------------------------------------------------------------------
+
+// Stand in for content that has yet to be added
 @mixin Placeholder($name, $min-width, $min-height: 0){
   background-color: #DDD;
   min-width: $min-width;

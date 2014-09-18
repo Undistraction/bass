@@ -1,3 +1,7 @@
+//
+// Default typography
+// -------------------------------------------------------------------------------------------------
+
 $default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 $default-font-weight: normal;
 
@@ -5,4 +9,4 @@ $header-font-family: $default-font-family ;
 $header-font-weight: normal;
 $header-font-style: normal;
 
-$max-measure: 40em;
+$max-measure: 40em; // Maximum width of a paragraph proportional to the size of the font it uses

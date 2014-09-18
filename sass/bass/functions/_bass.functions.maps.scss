@@ -1,3 +1,10 @@
+//
+// Functionality missing from Sass and Sassy Maps
+//
+// Note: I have a PR open adding this to Sassy maps
+// -------------------------------------------------------------------------------------------------
+
+// Perform a deep merge of two maps, optionally overwriting existing values
 @function map-merge-deep($map-old, $map-new, $overwrite: true) {
   // Iterate through each value of the new map
   @each $key, $new-value in $map-new {

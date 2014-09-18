@@ -1,4 +1,6 @@
-// z-index allows the creation of nested objects containing z-index values.
+//
+// Manage the z-index of elements in a central location
+// -------------------------------------------------------------------------------------------------
 
 $z-index-map: () !default;
 
@@ -6,6 +8,7 @@ $z-index-map: () !default;
 $z-index-bottom: 0;
 $z-index-top: 9999999;
 
+// Look up an element's z-index using a keyword
 @function layer-z-index($layer, $context) {
   @return map-get-deep($z-index-map, $context, $layer);
 }

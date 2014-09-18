@@ -1,11 +1,14 @@
-// Normalise vertical rhythm provided by Compass's vertical rhythm module and Horizontal Rhythm
-// using a predifined gutter width (we are using fluid columns/fixed gutters with Susy)
+//
+// Functions for managing vertical and horizontal rhythm
+// -------------------------------------------------------------------------------------------------
 
+// Wrap Vertical-rhythm's ambiguous 'rhythm' function in a 'v-rhythm' function.
 @function v-rhythm( $lines: 1, $font-size: $base-font-size, $offset: 0) {
-    @return rhythm($lines, $font-size, $offset )
+  @return rhythm($lines, $font-size, $offset )
 };
 
-// TODO: Support fluid gutters if used
+// Provide a place to pull a constant value for horizontal rhythm
 @function h-rhythm( $units: 1 ) {
+  $units: parse-lines($units); // Parse for keywords using sass-vertical-rhythm's keywords
   @return $unit-of-horizontal-rhythm * $units;
 };

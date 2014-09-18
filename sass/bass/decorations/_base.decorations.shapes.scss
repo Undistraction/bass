@@ -1,3 +1,8 @@
+//
+// CSS-Only Shapes
+// -------------------------------------------------------------------------------------------------
+
+// Triangle pointing toward [top | bottom | left | right]
 @mixin triangle( $point, $colour ) {
   $adjacent: opposite-position($point);
   border: 100px solid transparent;
