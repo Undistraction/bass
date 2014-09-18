@@ -4,18 +4,12 @@
 
 // Switch font smoothing on (great for light-on-dark text)
 // Source: http://maximilianhoffmann.com/posts/better-font-rendering-on-osx
-@mixin font-smoothing($value: on) {
-    @if $value == on {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    @else {
-        -webkit-font-smoothing: subpixel-antialiased;
-        -moz-osx-font-smoothing: auto;
-    }
+@mixin font-smoothing-on {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-%antialiased
-{
-  @mixin font-smoothing(on);
+@mixin font-smoothing-off {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
 }

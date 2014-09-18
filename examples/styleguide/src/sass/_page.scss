@@ -4,7 +4,7 @@
   color: white;
   padding: rem(30);
   text-align: center;
-  @include font-smoothing(on);
+  @include font-smoothing-on;
 }
 
 .Page-footer
