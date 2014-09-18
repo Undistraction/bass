@@ -1,7 +1,7 @@
 blockquote {
   @extend %WithMaxMeasure;
   margin: 0;
-  padding: 0 0 0 h-rhythm();
+  padding: 0 0 0 h-rhythm(single);
   border-left: $border;
 }
 

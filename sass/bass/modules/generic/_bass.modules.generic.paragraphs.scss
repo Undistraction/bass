@@ -1,5 +1,4 @@
 p {
-  margin: 0;
   @include margin-trailer(1);
   @include adjust-font-size-to(type-scale(base));
   @extend %WithMaxMeasure;

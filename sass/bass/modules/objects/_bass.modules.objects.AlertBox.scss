@@ -1,7 +1,7 @@
 .AlertBox {
   p,
   .Icon {
-    color: c(loud, text-color);
+    color: c(default, default, text-color-loud);
   }
 
   &--success {

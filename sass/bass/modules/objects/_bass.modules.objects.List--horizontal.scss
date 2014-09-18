@@ -6,7 +6,7 @@
     @include clearfix;
     @include adjust-font-size-to(type-scale(base), 1);
     float: left;
-    margin-left: h-rhythm(0.5);
+    margin-left: h-rhythm(half);
     &:first-child
     {
       margin-left: 0;

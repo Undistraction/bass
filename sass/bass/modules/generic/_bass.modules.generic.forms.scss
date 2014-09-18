@@ -33,20 +33,20 @@ input[type="tel"],
 input[type="time"],
 input[type="url"],
 textarea {
+  @include inset-shadow;
   border: none !important;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
-  color: c(default, text-color);
+  color: c(default, default, text-color);
   border-radius: 6px;
-  @include inset-shadow;
   background: c(default, form, input, background-color);
 }
 
 select
 {
+  @include adjust-font-size-to(type-scale(base), 2);
   border: $border;
   width: 100%;
-  @include adjust-font-size-to(type-scale(base), 2);
   padding: 0 h-rhythm(0.5);
   border-radius: 0;
   -webkit-appearance: none;
@@ -113,9 +113,9 @@ label {
 
 input[type=checkbox],
 input[type=radio] {
+  @include margin-trailer(1);
   display: inline-block;
   width: auto;
-  @include margin-trailer(1);
 
   &+label
   {
