@@ -749,4 +749,42 @@ h3.SectionHeading {
 p + h3.SectionHeading {
   padding-top: 0; }
 
+.triangle-top, .triangle-right, .triangle-bottom, .triangle-left, .circle {
+  display: inline-block;
+  margin-bottom: 1.375rem; }
+
+.triangle-top {
+  border: 1.875rem solid transparent;
+  border-bottom: 1.875rem solid black;
+  border-top: 0;
+  height: 0;
+  width: 0; }
+
+.triangle-right {
+  border: 1.875rem solid transparent;
+  border-left: 1.875rem solid black;
+  border-right: 0;
+  height: 0;
+  width: 0; }
+
+.triangle-bottom {
+  border: 1.875rem solid transparent;
+  border-top: 1.875rem solid black;
+  border-bottom: 0;
+  height: 0;
+  width: 0; }
+
+.triangle-left {
+  border: 1.875rem solid transparent;
+  border-right: 1.875rem solid black;
+  border-left: 0;
+  height: 0;
+  width: 0; }
+
+.circle {
+  width: 3.125rem;
+  height: 3.125rem;
+  background-color: black;
+  border-radius: 1.5625rem; }
+
 /*# sourceMappingURL=app.css.map */

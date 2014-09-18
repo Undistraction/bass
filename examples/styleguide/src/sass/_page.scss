@@ -39,3 +39,41 @@ p+h3.SectionHeading
 {
   padding-top: 0;
 }
+
+// Shapes
+
+%shape
+{
+  display: inline-block;
+  @include margin-trailer();
+}
+
+.triangle-top
+{
+  @extend %shape;
+  @include triangle(rem(30), top, black);
+}
+
+.triangle-right
+{
+  @extend %shape;
+  @include triangle(rem(30), right, black);
+}
+
+.triangle-bottom
+{
+  @extend %shape;
+  @include triangle(rem(30), bottom, black);
+}
+
+.triangle-left
+{
+  @extend %shape;
+  @include triangle(rem(30), left, black);
+}
+
+.circle
+{
+  @extend %shape;
+  @include circle(rem(50), black);
+}
