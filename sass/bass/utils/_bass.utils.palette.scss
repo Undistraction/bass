@@ -11,17 +11,17 @@ $palette-map: ();
 
 // Register a palette to make it available using the c() function
 // If no name is given, the values in $palette are added to $palette map's top level
-@function register-palette($name:null, $palette:null) {
+@function register-palette($name:null, $palette:null, $overwrite:true) {
   // Merge, overriding existing values
   @if $name {
-    $palette-map: map-merge-deep($palette-map, ($name: $palette)) !global;
+    $palette-map: map-merge-deep($palette-map, ($name: $palette), $overwrite) !global;
   }@else{
-    $palette-map: map-merge-deep($palette-map, $palette) !global;
+    $palette-map: map-merge-deep($palette-map, $palette, $overwrite) !global;
   }
   @return none;
 }
 
 // Because sass doesn't support function invocation at a root level it has to be done from within a mixin
-@mixin register-palette($name:null, $palette:null){
-  $temp: register-palette($name, $palette);
+@mixin register-palette($name:null, $palette:null, $overwrite:true){
+  $temp: register-palette($name, $palette, $overwrite);
 }
