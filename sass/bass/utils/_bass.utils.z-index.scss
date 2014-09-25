@@ -13,6 +13,6 @@ $z-index-top: 9999999;
   @return map-get-deep($z-index-map, $layers);
 }
 
-@mixin z-index($layers) {
+@mixin z-index($layers...) {
   z-index: layer-z-index($layers);
 }
