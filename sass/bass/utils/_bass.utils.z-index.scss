@@ -10,7 +10,7 @@ $z-index-top: 9999999;
 
 // Look up an element's z-index using a keyword
 @function layer-z-index($layers...) {
-  @return map-get-deep($z-index-map, $layers);
+  @return: map-get-deep($z-index-map, $layers...);
 }
 
 @mixin z-index($layers...) {
