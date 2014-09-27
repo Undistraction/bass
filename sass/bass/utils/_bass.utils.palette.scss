@@ -5,8 +5,13 @@
 $palette-map: ();
 
 // Look up a color value in the palette map
-@function c($palette-path...) {
+@function palette($palette-path...) {
   @return map-get-deep($palette-map, $palette-path);
+}
+
+// Shorthand
+@function p($palette-path...) {
+  @return palette($palette-path...);
 }
 
 // Register a palette to make it available using the c() function
