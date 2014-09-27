@@ -1,0 +1,9 @@
+$breakpoints: ();
+
+@function get-breakpoint($name){
+  @if map-has-key($breakpoints, $name) {
+    @return map-get($breakpoints, $name);
+  } @else {
+    @error "@get-breakpoint There is no breakpoint named '#{$name}' in the $breakpoints map '#{inspect($breakpoints)}"
+  }
+}
