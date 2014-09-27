@@ -1,0 +1,69 @@
+$block-property-names: margin margin-top
+                       margin-bottom
+                       margin-left
+                       margin-right
+                       padding
+                       padding-top
+                       padding-bottom
+                       padding-left
+                       padding-right
+                       border
+                       border-top
+                       border-bottom
+                       border-left
+                       border-right;
+
+@mixin render-box($breakpoint-name, $map){
+  @each $property in $block-property-names {
+    @if map-has-key($map, $property) {
+
+      @if $breakpoint-name != default {
+        @include use-baseline($breakpoint-name) {
+          @include render-box-property($breakpoint-name, $property, map-get($map, $property));
+        }
+      } @else {
+        @include render-box-property($breakpoint-name, $property, map-get($map, $property));
+      }
+    }
+  }
+}
+
+@mixin render-box-property($breakpoint-name, $property, $value) {
+  $unit: rhythm();
+  $parsed-values: '';
+  $parsed-value: null;
+  @each $component in $value{
+    @if map-has-key($rhythm-units, $component){
+      $parsed-value: $unit * map-get($rhythm-units, $component);
+    }@else if $component != !important and unitless($component) {
+      $parsed-value: $unit * $component;
+    }@else {
+      $parsed-value: $component;
+    }
+    $parsed-values: "#{$parsed-values} #{$parsed-value}";
+  }
+  #{$property}: #{$parsed-values};
+}
+
+
+@mixin box($map){
+
+  $defaults: ();
+
+  // Handle default properties
+  @each $property in $block-property-names {
+    @if map-has-key($map, $property) {
+      $defaults: map-merge($defaults, ($property: map-get($map, $property)));
+      $map: map-remove($map, $property);
+    }
+  }
+  @include render-box(default, $defaults);
+
+  // Handle breakpointed properties
+  @each $breakpoint-name, $breakpoint-value in $map {
+    $breakpoint: get-breakpoint($breakpoint-name);
+    @include breakpoint($breakpoint) {
+      @include render-box($breakpoint-name, $breakpoint-value);
+    }
+  }
+}
