@@ -2,6 +2,18 @@
 // Access the appropriate rhythm for the given breakpoint
 // -------------------------------------------------------------------------------------------------
 
+$rhythm-units: (
+  single: 1,
+  double: 2,
+  tripple: 3,
+  quadruple: 4,
+  three-quarters: 0.75,
+  quarter: 0.25,
+  half: 0.5,
+  third: 0.333333333333,
+  two-thirds: 0.666666666666
+);
+
 // Lookup rhythm values for the given $breakpoint
 @function get-rhythm($property, $breakpoint:default) {
   @return map-get-deep($rhythm-map, $breakpoint, $property);
@@ -11,23 +23,25 @@
 //
 // mixin adapted from the following pull request https://github.com/chriseppstein/compass/pull/1352
 // See https://github.com/Compass/compass/issues/1487
-// See http://sassmeister.com/gist/7992795
-@mixin use-baseline($breakpoint) {
+// Teporarily use different values for calculating vertical-rhythm
+@mixin use-baseline($breakpoint-name) {
 
    // Get rhythm values for this $breakpoint
-   $new-base-size: get-rhythm(base-font-size, $breakpoint);
-   $new-line-height: get-rhythm(base-line-height, $breakpoint);
+   $new-base-font-size: get-vertical-rhythm($breakpoint-name, base-font-size);
+   $new-base-line-height: get-vertical-rhythm($breakpoint-name, base-line-height);
 
    // Save the baseline context
    $initial-font-size: $base-font-size;
    $initial-line-height: $base-line-height;
 
    // Apply the new context
-   $base-font-size: $new-base-font-size;
-   $base-line-height: $new-line-height;
+   $base-font-size: $new-base-font-size !global;
+   $base-line-height: $new-base-line-height !global;
+
+   // Render content passed to mixin
    @content;
 
    // Reapply the initial context
-   $base-font-size: $initial-font-size;
-   $base-line-height: $initial-line-height;
+   $base-font-size: $initial-font-size !global;
+   $base-line-height: $initial-line-height !global;
 }
