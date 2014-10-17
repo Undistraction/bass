@@ -38,15 +38,39 @@ module.exports = function(grunt) {
 
     // Sass
     sass: {
+      options: {
+        style: 'expanded',
+        compass: false,
+        bundleExec: true,
+        loadPath: [
+          './node_modules/bootcamp/dist',
+          './bower_components/box/sass',
+          './bower_components/position/sass',
+          './bower_components/rhythm/sass',
+          './bower_components/sassy-maps/sass',
+          './sass'
+        ]
+      },
       test: {
-        options: {
-          style: 'expanded',
-          compass: false,
-          bundleExec: true,
-          loadPath: './node_modules/bootcamp/dist'
-        },
         files: {
           './tmp/results.css': './test/test.scss'
+        }
+      },
+      styleguide: {
+        options: {
+          loadPath: [
+            './bower_components/normalize-scss',
+            './bower_components/compass-breakpoint/stylesheets',
+            './bower_components/modular-scale/stylesheets',
+            './bower_components/box/sass',
+            './bower_components/position/sass',
+            './bower_components/rhythm/sass',
+            './bower_components/sassy-maps/sass',
+            './sass'
+          ]
+        },
+        files: {
+          './examples/styleguide/assets/css/app.css': './examples/styleguide/src/sass/app.scss'
         }
       }
     },
@@ -62,7 +86,7 @@ module.exports = function(grunt) {
 
     // Watch
     watch: {
-      dist: {
+      test: {
         files: [
                 './test/**/*.scss',
                 './<%= dir.src %>/**/*.scss'
@@ -86,6 +110,23 @@ module.exports = function(grunt) {
       docs : {
         path: './docs/index.html',
         app: 'Google Chrome'
+      },
+      styleguide : {
+        path: 'http://localhost:8999',
+        app: 'Google Chrome'
+      }
+    },
+
+    // Connect
+    connect: {
+      styleguide: {
+        options: {
+          port: 8999,
+          keepalive: true,
+          open: 'http://localhost:8999/index.html',
+          hostname: 'localhost',
+          base: './examples/styleguide'
+        }
       }
     },
 
@@ -127,8 +168,9 @@ module.exports = function(grunt) {
   });
 
   // Define own tasks
-  grunt.registerTask('test', ['sass', 'bootcamp']);
-  grunt.registerTask('dev', ['test', 'watch']);
+  grunt.registerTask('test', ['sass:test', 'bootcamp']);
+  grunt.registerTask('styleguide', ['sass:styleguide', 'connect:styleguide']);
+  grunt.registerTask('dev', ['test', 'watch:test']);
   grunt.registerTask('build', ['test', 'sassdoc', 'concat']);
   grunt.registerTask('docs', ['sassdoc', 'open:docs']);
   grunt.registerTask('deploy', ['sassdoc', 'build', 'bump-commit', 'shell:ghpages'])
