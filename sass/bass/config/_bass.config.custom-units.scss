@@ -1,0 +1,34 @@
+// Define a map of units
+$custom-units-map: (
+  single: 1,
+  double: 2,
+  triple: 3,
+  quadruple: 4,
+  half: 0.5,
+  third: 0.333333333,
+  quarter: 0.25
+);
+
+// Override
+@function bass-parse-custom-unit-filter($key, $orientation){
+  @if map-has-key($custom-units-map, $key) {
+    // Find the unit
+    $unit: map-get($custom-units-map, $key);
+    // Use the unit with the rhythm value for the orientation
+    @return bass-rhythm-value($orientation, $unit);
+  } @else {
+    // If it isn't recognised throw an error
+    // Unfortunately Sass doesn't allow us to call super.
+    @return position-throw-error($position-invalid-value-error, "Invalid value #{$value}");
+  }
+}
+
+// Overrides
+
+@function box-parse-value-filter($key, $orientation){
+  @return bass-parse-custom-unit-filter($key, $orientation);
+}
+
+@function position-parse-value-filter($key, $orientation){
+  @return bass-parse-custom-unit-filter($key, $orientation);
+}
