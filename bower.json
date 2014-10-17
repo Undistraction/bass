@@ -17,5 +17,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "position": "~0.2.12",
+    "rhythm": "~0.1.4",
+    "box": "~0.0.17"
+  }
 }
