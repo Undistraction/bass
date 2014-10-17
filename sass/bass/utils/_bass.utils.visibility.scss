@@ -17,7 +17,7 @@
 // Makes an element visually hidden, but accessible.
 // Source: Foundation 5
 // @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-@mixin is-invisible {
+@mixin visually-hidden {
   position: absolute !important;
   height: 1px;
   width: 1px;
@@ -26,7 +26,7 @@
 }
 
 // Turns off the element-invisible effect.
-@mixin is-invisible-off($position:static) {
+@mixin visually-hidden-off($position:static) {
   position: $position !important;
   height: auto;
   width: auto;
@@ -36,5 +36,5 @@
 
 .show-for-all
 {
-  @include element-invisible-off;
+  @include visually-hidden-off;
 }
