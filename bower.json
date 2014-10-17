@@ -5,12 +5,12 @@
   "authors": [
     "Pedr Browne <pedr.browne@gmail.com>"
   ],
-  "description": "Personal Sass Toolkit",
+  "description": "Sass Toolkit",
   "keywords": [
     "sass"
   ],
   "license": "MIT",
-  "main": "sass/_bass.scss",
+  "main": "dist/_bass.scss",
   "ignore": [
     "**/.*",
     "node_modules",
