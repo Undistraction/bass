@@ -1,0 +1,17 @@
+//
+// A single location to store and lookup vertical and horizontal rhythm
+//
+// -------------------------------------------------------------------------------------------------
+
+@function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) {
+  @return map-get-deep($bass-rhythm-value-map, $breakpoint, $orientation) * $units;
+};
+
+@function bass-v-rhythm-value( $units: 1, $breakpoint: default ) {
+  @return bass-rhythm-value(vertical, $units, $breakpoint);
+};
+
+// Provide a place to pull a constant value for horizontal rhythm
+@function bass-h-rhythm-value( $units: 1, $breakpoint:default ) {
+  @return bass-rhythm-value(horizontal, $units, $breakpoint);
+};

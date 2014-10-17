@@ -1,8 +1,0 @@
-//
-// A single location to store and lookup vertical and horizontal rhythm
-//
-// -------------------------------------------------------------------------------------------------
-
-@function bass-rhythm($orientation, $breakpoint: default) {
-  @return map-get-deep($bass-rhythm-map, $breakpoint, $orientation);
-}

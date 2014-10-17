@@ -1,0 +1,16 @@
+//
+// Default rhythm settings
+// -------------------------------------------------------------------------------------------------
+
+$bass-rhythm-value-map: (
+  default:(
+    vertical: 22px,
+    horizontal: 22px
+  )
+) !default;
+
+
+// // Horizontal Rhythm
+// // -------------------------------------------------------------------------------------------------
+
+$unit-of-horizontal-rhythm: bass-rhythm-value(horizontal); // Here we are using the same unit as the vertical
