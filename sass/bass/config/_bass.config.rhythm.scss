@@ -2,31 +2,30 @@
 // Default rhythm settings
 // -------------------------------------------------------------------------------------------------
 
-$rhythm-map: (
+$bass-rhythm-map: (
   default:(
-    base-font-size: 16px,
-    base-line-height: 22px
+    vertical: 22px,
+    horizontal: 22px
   )
-);
+) !default;
 
 // Vertical Rhythm
 // -------------------------------------------------------------------------------------------------
 
 // Vertical Rhythm configration
-$base-font-size: get-rhythm(base-font-size);
-$base-line-height: get-rhythm(base-line-height);
-$round-to-nearest-half-line: true;
-$rhythm-unit: 'rem';
-$relative-font-sizing : false;
-$min-line-padding: 0;
-@include establish-baseline;
+$rhythm-base-font-size: bass-type-scale(base);
 
-// Rem Conversion
-// -------------------------------------------------------------------------------------------------
+// @error $rhythm-base-font-size;
+$rhythm-base-line-height: bass-rhythm(vertical);
+$rhythm-round-to-nearest-half-line: true;
+@include rhythm-establish;
 
-$rem-base: $base-font-size;
+// // Rem Conversion
+// // -------------------------------------------------------------------------------------------------
 
-// Horizontal Rhythm
-// -------------------------------------------------------------------------------------------------
+$rem-base: $rhythm-base-font-size;
 
-$unit-of-horizontal-rhythm: rhythm(); // Here we are using the same unit as the vertical
+// // Horizontal Rhythm
+// // -------------------------------------------------------------------------------------------------
+
+$unit-of-horizontal-rhythm: bass-rhythm(horizontal); // Here we are using the same unit as the vertical

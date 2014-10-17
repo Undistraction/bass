@@ -21,9 +21,9 @@ $vertical-rhythms: (
 );
 
 // Compass Vertical Rhythm configration
-$base-font-size: get-rhythm(base-font-size);
-$base-line-height: get-rhythm(base-line-height);
-@include establish-baseline;
+$rhythm-base-font-size: get-rhythm(base-font-size);
+$rhythm-base-line-height: get-rhythm(base-line-height);
+@include rhythm-establish;
 
 // Configuration for rem() calculations
 $rem-base: $base-font-size;

@@ -2,7 +2,7 @@
 // Default typescale
 // -------------------------------------------------------------------------------------------------
 
-$type-scale-map:
+$bass-type-scale-map:
 (
   default:
   (
@@ -13,4 +13,4 @@ $type-scale-map:
     large:               22px,
     x-large:             28px
   )
-);
+) !default;

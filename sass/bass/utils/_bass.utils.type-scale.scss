@@ -5,12 +5,10 @@
 // the given named value at the current breakpoint ( small, base, medium, large, x-large etc )
 // -------------------------------------------------------------------------------------------------
 
-$type-scales: ();
-
-@mixin register-type-scale($breakpoint, $type-scale){
-  $type-scales: map-set($type-scales, $breakpoint, $type-scale) !global;
+@mixin bass-register-type-scale($type-scale, $breakpoint){
+  $bass-type-scale-map: map-set($bass-type-scale-map, $breakpoint, $type-scale) !global;
 }
 
-@function type-scale($breakpoint, $size) {
-  @return map-get-deep($type-scales, $breakpoint, $size);
+@function bass-type-scale($size, $breakpoint:default) {
+  @return map-get-deep($bass-type-scale-map, $breakpoint, $size);
 }
