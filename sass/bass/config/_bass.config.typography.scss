@@ -2,11 +2,11 @@
 // Default typography
 // -------------------------------------------------------------------------------------------------
 
-$default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-$default-font-weight: normal;
+$bass-default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$bass-default-font-weight: normal;
 
-$header-font-family: $default-font-family ;
-$header-font-weight: normal;
-$header-font-style: normal;
+$bass-header-font-family: $bass-default-font-family ;
+$bass-header-font-weight: normal;
+$bass-header-font-style: normal;
 
-$max-measure: 40em; // Maximum width of a paragraph proportional to the size of the font it uses
+$bass-max-measure: 40em; // Maximum width of a paragraph proportional to the size of the font it uses
