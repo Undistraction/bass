@@ -1,5 +1,5 @@
 %button {
-  @include adjust-font-size-to(type-scale(base), 2);
+  @include rhythm(bass-type-scale(base), 2);
   padding-left: h-rhythm(half);
   padding-right: h-rhythm(half);
   display: block;
@@ -10,29 +10,29 @@
   text-align: center;
   -webkit-appearance: none;
   -webkit-border-radius:0;
-  color: c(default, button, text-color);
-  background-color: c(default, button, background-color);
+  color: p(default, button, text-color);
+  background-color: p(default, button, background-color);
 
   &.is-active {
-    color: c(default, button, active, text-color);
-    background-color: c(default, button, active, background-color);
+    color: p(default, button, active, text-color);
+    background-color: p(default, button, active, background-color);
   }
 
   &.is-disabled,
   &.is-disabled:hover {
-    opacity: $disabled-opacity;
+    opacity: $bass-disabled-opacity;
     cursor: not-allowed;
-    color: c(default, button, disabled, text-color);
-    background-color: c(default, button, disabled, background-color);
+    color: p(default, button, disabled, text-color);
+    background-color: p(default, button, disabled, background-color);
   }
 
   &:hover,
   &:focus {
-    background-color: c(default, button, hover, background-color);
+    background-color: p(default, button, hover, background-color);
   }
 
   .Icon {
-    @include adjust-font-size-to(type-scale(base), 2);
+    @include rhythm(bass-type-scale(base), 2);
   }
 }
 

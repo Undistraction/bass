@@ -1,24 +1,24 @@
 a {
   text-decoration: none;
-  color: c(default, link, text-color);
+  color: p(default, link, text-color);
   transition: background-color 0.4s ease-in-out;
   transition: color 0.4s ease-in-out;
 
   &:hover,
   &:focus
   {
-    color: c(default, link, hover, text-color);
+    color: p(default, link, hover, text-color);
   }
 
   &.is-active
   {
-    color: c(default, link, active, text-color);
+    color: p(default, link, active, text-color);
   }
 
   &.is-disabled,
   &.is-disabled:hover
   {
-    color: c(default, link, disabled, text-color) !important;
+    color: p(default, link, disabled, text-color) !important;
     opacity:0.2;
   }
 

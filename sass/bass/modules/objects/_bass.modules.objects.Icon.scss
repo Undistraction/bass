@@ -1,9 +1,7 @@
 .Icon {
-  opacity: 0.5;
   margin-right: h-rhythm(half);
 
   &:only-child {
-    opacity:1;
     margin-right: 0;
   }
 }

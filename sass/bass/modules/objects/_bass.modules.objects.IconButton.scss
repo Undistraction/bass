@@ -1,6 +1,6 @@
 .IconButton-Label,
 .IconButton-Icon {
-  @include adjust-font-size-to(type-scale(base));
+  @include rhythm(bass-type-scale(base));
 }
 
 .IconButton-Icon {
@@ -8,9 +8,5 @@
 }
 
 .IconButton-Label {
-  //@extend .hide-for-small-only;
   margin-left: h-rhythm(third);
-  // @include breakpoint($medium-up) {
-  //   display: inline-block;
-  // }
 }

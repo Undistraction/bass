@@ -1,8 +1,8 @@
 blockquote {
+  @include padding-left(single);
   @extend %WithMaxMeasure;
   margin: 0;
-  padding: 0 0 0 h-rhythm(single);
-  border-left: $border;
+  border-left: $bass-default-border;
 }
 
 cite {

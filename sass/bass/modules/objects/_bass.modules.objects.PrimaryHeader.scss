@@ -4,18 +4,18 @@
   position:relative;
 
   .PrimaryHeader-Title {
-    @include margin-trailer(0.5);
+    @include margin-bottom(half);
   }
 
   .PrimaryHeader-Subtitle {
-    @include adjust-font-size-to(type-scale(base), 1);
+    @include rhythm(bass-type-scale(base), 1);
     text-align: center;
-    color: c(default, default, text-color-quiet)
+    color: p(default, default, text-color-quiet)
   }
 
   h1+.Subtitle {
-    @include margin-leader(0);
+    @include margin-top(half);
   }
 
-  @include margin-trailer(0.5);
+  @include margin-bottom(half);
 }

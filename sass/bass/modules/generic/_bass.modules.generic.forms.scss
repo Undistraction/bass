@@ -9,7 +9,7 @@ input,
 textarea,
 select
 {
-  @include margin-trailer(1);
+  @include margin-bottom(single);
 }
 
 /* Override normalize */
@@ -44,10 +44,10 @@ textarea {
 
 select
 {
-  @include adjust-font-size-to(type-scale(base), 2);
-  border: $border;
+  @include rhythm(bass-type-scale(base), 2);
+  @include padding(0 half);
+  border: $bass-default-border;
   width: 100%;
-  padding: 0 h-rhythm(0.5);
   border-radius: 0;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
@@ -67,8 +67,8 @@ textarea[rows] {
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
+  @include margin-left(half);
   display: inline-block;
-  margin-left: h-rhythm(0.5);
   margin-bottom: 0;
   vertical-align: baseline;
 }
@@ -79,7 +79,7 @@ input[type="file"] {
 }
 
 form {
-  @include margin-trailer;
+  @include margin-bottom(single);
 }
 
 input,
@@ -90,30 +90,28 @@ label {
 
 input,
 textarea {
-  padding-left: h-rhythm(0.5);
-  padding-right: h-rhythm(0.5);
+  @include padding(0 single)
 }
 
 input {
-  @include adjust-font-size-to(type-scale(base), 2);
+  @include rhythm(bass-type-scale(base), 2);
 }
 
 textarea {
-  @include padding-leader(0.5);
-  @include padding-trailer(0.5);
+  @include padding(half 0);
   height: auto;
 }
 
 label {
-  @include adjust-font-size-to(type-scale(base), 1);
-  @include margin-trailer(0.5);
+  @include rhythm(bass-type-scale(base), 1);
+  @include margin-bottom(half);
 }
 
 
 
 input[type=checkbox],
 input[type=radio] {
-  @include margin-trailer(1);
+  @include margin-bottom(single);
   display: inline-block;
   width: auto;
 
