@@ -1,4 +1,9 @@
-// Define a map of units
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// A map containing custom units to use in rhythm, size, box and positional calculations
 $custom-units-map: (
   single: 1,
   double: 2,
@@ -7,9 +12,21 @@ $custom-units-map: (
   half: 0.5,
   third: 0.333333333,
   quarter: 0.25
-);
+) !default;
 
-// Override
+/// Parse custom values into distance values.
+///
+/// @param {String} $key
+///   The value to parse.
+///
+/// @param {String} $orientation
+///   The orientation of the value (horizontal | vertical).
+///
+/// @returns {Number}
+///   The parsed value
+///
+/// @throws $bass-invalid-value-error
+///
 @function bass-parse-custom-unit-filter($key, $orientation){
   @if map-has-key($custom-units-map, $key) {
     // Find the unit
@@ -19,16 +36,6 @@ $custom-units-map: (
   } @else {
     // If it isn't recognised throw an error
     // Unfortunately Sass doesn't allow us to call super.
-    @return position-throw-error($position-invalid-value-error, "Invalid value #{$value}");
+    @return position-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
   }
-}
-
-// Overrides
-
-@function box-parse-value-filter($key, $orientation){
-  @return bass-parse-custom-unit-filter($key, $orientation);
-}
-
-@function position-parse-value-filter($key, $orientation){
-  @return bass-parse-custom-unit-filter($key, $orientation);
 }
