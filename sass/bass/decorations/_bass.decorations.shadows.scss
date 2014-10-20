@@ -1,8 +1,9 @@
-//
-// Reusable Default shadows
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group decorations
+////
 
-// A uniform inset shadow for use on items like input fields
+/// A uniform inset shadow for use on items like input fields.
 @mixin inset-shadow {
   box-shadow: inset 0 0 rem(4) rgba(0,0,0,0.2);
 }

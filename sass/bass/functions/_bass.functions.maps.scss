@@ -1,10 +1,25 @@
-//
-// Functionality missing from Sass and Sassy Maps
-//
-// Note: I have a PR open adding this to Sassy maps
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group support
+////
 
-// Perform a deep merge of two maps, optionally overwriting existing values
+/// Perform a deep merge of two maps, optionally overwriting existing values.
+/// Note: I have a PR open adding this to Sassy maps
+///
+/// @param {Map} $map-old
+///   The map to merge to.
+///
+/// @param {Map} $map-new
+///   The map to merge into `$map-old`
+///
+/// @param {Bool} $overwrite (true)
+///   How should the merge deal with existing values? If true, any existing values will be
+///   Overwritten. If false, existing values will be preserved. The logic handling overwriting
+///   Will fully recurse the map, so merging is based on path rather than node.
+///
+/// @return {Map}
+///   A new map resulting from the merge of `$map-old` and `$map-new`.
+///
 @function map-merge-deep($map-old, $map-new, $overwrite: true) {
   // Iterate through each value of the new map
   @each $key, $new-value in $map-new {

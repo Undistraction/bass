@@ -1,6 +1,10 @@
-//
-// Default UI
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group config
+////
 
-$bass-disabled-opacity: 0.7;
-$bass-default-border: solid 1px darken(white, 10);
+/// The `opacity` to use when an element is in a disabled state
+$bass-disabled-opacity: 0.7 !default;
+
+/// The default `border`.
+$bass-default-border: solid 1px darken(white, 10) !default;

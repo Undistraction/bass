@@ -1,10 +1,24 @@
-//
-// CSS-Only Shapes
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group decorations
+////
 
-// Triangle pointing toward [top | bottom | left | right]
+/// A triangle shape.
+///
+/// @param {Number} $length
+///   The length of the triangle.
+///
+/// @param {String} $direction
+///   The direction the triangle is pointing at (top | bottom | left | right).
+///
+/// @param {String} $colour
+///   The colour of the triangle.
+///
+/// @outputs
+///   A triangle.
+///
 @mixin triangle( $length, $direction, $colour ) {
-  $adjacent: opposite-position($direction);
+  $adjacent: opposite-side($direction);
   border: $length solid transparent;
   border-#{$adjacent}: $length solid $colour;
   border-#{$direction}: 0;
@@ -12,19 +26,20 @@
   width:0;
 }
 
+/// A circle shape.
+///
+/// @param {Number} $diameter
+///   The diameter of the circle.
+///
+/// @param {Number} $color
+///   The colour of the circle.
+///
+/// @outputs
+///   A circle.
+///
 @mixin circle($diameter, $color) {
   width: $diameter;
   height: $diameter;
   background-color: $color;
   border-radius: $diameter/2;
-}
-
-@function opposite-position($position){
-  $positions:(
-    top: bottom,
-    bottom: top,
-    left: right,
-    right: left
-  );
-  @return map-get($positions, $position);
 }

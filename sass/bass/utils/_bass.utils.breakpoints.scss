@@ -1,3 +1,9 @@
+////
+/// @author Pedr Browne
+/// @group utils
+////
+
+/// A map containing breakpoints used by breakpoint.
 $bass-breakpoints-map: ();
 
 @function get-breakpoint($name){
