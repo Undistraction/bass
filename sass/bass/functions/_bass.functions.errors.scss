@@ -1,3 +1,0 @@
-@function throw-error($name, $message){
-  @error "ERROR #{$name} – #{$message}";
-}
