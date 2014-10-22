@@ -7,4 +7,12 @@
 $bass-disabled-opacity: 0.7 !default;
 
 /// The default `border`.
+///
+/// @type List
+///
 $bass-default-border: solid 1px darken(white, 10) !default;
+
+/// Avoid page-width jumps when moving from a page that needs scrolling to a page that
+/// doesn't and vice=versa by forcing a scrollbar at all times.
+///
+$bass-should-force-y-scroll: true !default;

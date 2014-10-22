@@ -5,5 +5,8 @@ body {
 }
 
 html {
-  overflow-y: scroll;
+  // Force y-scoll by default
+  @if $bass-should-force-y-scroll {
+    overflow-y: scroll;
+  }
 }
