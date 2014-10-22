@@ -1,6 +1,9 @@
-// Set box-sizing globally to handle padding and border widths
-*,
-*:before,
-*:after {
+// See: http://www.paulirish.com/2012/box-sizing-border-box-ftw
+// Apply a natural box layout model to all elements, but allowing components to change
+
+html {
   box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
