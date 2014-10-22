@@ -1,8 +1,20 @@
-//
-// Placeholder mixins
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
-// Stand in for content that has yet to be added
+/// A quick way to add a titled block to represent content that will be added later.
+///
+/// @param {String} $name
+///   The title to display.
+///
+/// @param {Number} $min-width
+///   A min-width to simulate content.
+///
+/// @param {Number} $min-height
+///   A min-height to simulate content.
+///
+/// @outputs Styles to make an element a placeholder
 @mixin Placeholder($name, $min-width, $min-height: 0){
   background-color: #DDD;
   min-width: $min-width;

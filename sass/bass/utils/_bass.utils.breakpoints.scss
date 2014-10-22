@@ -3,13 +3,20 @@
 /// @group utils
 ////
 
-/// A map containing breakpoints used by breakpoint.
-$bass-breakpoints-map: ();
-
+/// Get the breakpoint with the given name.
+///
+/// @param {String} $name
+///   The breakpoint name.
+///
+/// @returns {String}
+///   The breakpoint.
+///
+/// @throws bass-no-breakpoint-error
+///
 @function get-breakpoint($name){
   @if map-has-key($bass-breakpoints-map, $name) {
     @return map-get($bass-breakpoints-map, $name);
   } @else {
-    @error "@get-breakpoint There is no breakpoint named '#{$name}' in the $breakpoints map '#{inspect($breakpoints)}"
+    $error: bass-throw-errror($bass-no-breakpoint-error, "There is no breakpoint named '#{$name}'");
   }
 }

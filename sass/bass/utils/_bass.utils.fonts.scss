@@ -1,14 +1,25 @@
-//
-// Mixins and classes for improving font rendering and display
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne (From mixins by Maximilian Hoffmann)
+/// @group utils
+////
 
-// Switch font smoothing on (great for light-on-dark text)
-// Source: http://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+/// Switch font smoothing on (great for light-on-dark text).
+///
+/// @see http://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+///
+/// @output Properties to smooth font rendering.
+///
 @mixin font-smoothing-on {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/// Switch font smoothing off.
+///
+/// @see http://maximilianhoffmann.com/posts/better-font-rendering-on-osx.
+///
+/// @output Reset properties for smooth font-rendering to default.
+///
 @mixin font-smoothing-off {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;

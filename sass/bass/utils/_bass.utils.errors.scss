@@ -1,6 +1,6 @@
 ////
 /// @author Pedr Browne
-/// @group support
+/// @group utils
 ////
 
 // These items are used in test only
@@ -27,7 +27,7 @@ $bass-error-thrown: false;
       $bass-last-error: $error !global;
     }
   } @else {
-    @error "#{$error} #{$message}";
+    @error "#{$error}: #{$message}";
   }
   @return null;
 }
