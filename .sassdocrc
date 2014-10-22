@@ -8,8 +8,11 @@
   "package": "./package.json",
 
   "groups": {
-    "api": "API",
-    "support": "Support"
+    "config": "Config",
+    "integration": "Integration",
+    "decorations": "Decorations",
+    "support": "Support",
+    "utils": "Utils"
   },
 
   "theme": "default",
