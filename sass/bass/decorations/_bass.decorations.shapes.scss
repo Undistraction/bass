@@ -11,7 +11,7 @@
 /// @param {String} $direction
 ///   The direction the triangle is pointing at (top | bottom | left | right).
 ///
-/// @param {String} $colour
+/// @param {Colour} $colour
 ///   The colour of the triangle.
 ///
 /// @outputs
@@ -31,7 +31,7 @@
 /// @param {Number} $diameter
 ///   The diameter of the circle.
 ///
-/// @param {Number} $color
+/// @param {Colour} $color
 ///   The colour of the circle.
 ///
 /// @outputs
