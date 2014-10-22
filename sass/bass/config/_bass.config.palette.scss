@@ -3,7 +3,8 @@
 /// @group config
 ////
 
-// You can override any of these values by registering a palette of the same name.
+// If you have defined a palette called default already, only keys you haven't defined
+// will be overwritten.
 @include register-palette(default,
   (
     default:
@@ -61,5 +62,5 @@
         background-color: darken(white, 5)
       )
     )
-  )
+  ), false
 );

@@ -4,19 +4,43 @@
 ////
 
 /// Default `font-family`.
+///
+/// @type List
+///
 $bass-default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Default `font-weight`.
+///
+/// @type String
+///
 $bass-default-font-weight: normal !default;
 
+/// Default bold `font-weight`.
+///
+/// @type String
+///
+$bass-default-font-weight-bold: bold !default;
+
 /// Headers `font-family`.
+///
+/// @type String
+///
 $bass-header-font-family: $bass-default-font-family  !default;
 
 /// Headers `font-weight`.
-$bass-header-font-weight: normal !default;
+///
+/// @type Number
+///
+$bass-header-font-weight: $bass-default-font-weight !default;
 
 /// Headers `font-style`.
+///
+/// @type String
+///
 $bass-header-font-style: normal !default;
 
 /// Maximum width of a paragraph proportional to the size of the font it uses.
+///
+/// @type Number
+///
 $bass-max-measure: 40em !default;
