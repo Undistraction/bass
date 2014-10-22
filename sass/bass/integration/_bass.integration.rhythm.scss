@@ -1,0 +1,20 @@
+////
+/// @author Pedr Browne
+/// @group integration
+////
+
+// We don't want to do any configuration if it has already been done.
+@if not $rhythm-was-established {
+
+  // Configure Rhythm's $rhythm-base-font-size
+  $rhythm-base-font-size: bass-type-scale(base) !global;
+
+  // Configure Rhythm's $rhythm-base-line-height
+  $rhythm-base-line-height: bass-rhythm-value(vertical) !global;
+
+  // Configure Rhythm's $rhythm-round-to-nearest-half-line variable
+  $rhythm-round-to-nearest-half-line: true !global;
+
+  /// Establish rhythm
+  @include rhythm-establish;
+}

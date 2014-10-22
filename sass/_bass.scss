@@ -1,9 +1,12 @@
-// Manifest.
-// Don't import this file. Just cherrypick what you need.
+// Bass
+// A Toolkit
+//
+// Github: https://github.com/Undistraction/bass
+// Docs: http://undistraction.github.io/bass/docs
 
 @import 'bass/bass.decorations';
 @import 'bass/bass.functions';
-@import 'bass/bass.integration';
 @import 'bass/bass.utils';
 @import 'bass/bass.config';
+@import 'bass/bass.integration';
 @import 'bass/bass.modules';
