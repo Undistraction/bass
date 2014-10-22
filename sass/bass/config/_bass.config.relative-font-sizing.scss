@@ -1,0 +1,11 @@
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// Set the base font size for rem and em calculations.
+/// This should be the font-size of the `html` element
+///
+/// @type Number
+///
+$bass-rem-base: $rhythm-base-font-size !default;
