@@ -1,4 +1,6 @@
-/* Adjust margin for form elements below */
+// Adjusted from Foundation 5
+
+// Adjust margin for form elements below
 input[type="file"],
 input[type="checkbox"],
 input[type="radio"] {
@@ -12,13 +14,6 @@ select
   @include margin-bottom(single);
 }
 
-/* Override normalize */
-input[type="search"] {
-  box-sizing: border-box;
-}
-
-
-/* We use this to get basic styling on all basic form elements */
 input[type="text"],
 input[type="password"],
 input[type="date"],
@@ -58,12 +53,10 @@ input[type="submit"] {
   -webkit-border-radius: 0px;
 }
 
-/* Respect enforced amount of rows for textarea */
+// Respect enforced row count set on element
 textarea[rows] {
   height: auto;
 }
-
-
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
@@ -73,7 +66,7 @@ input[type="radio"] + label {
   vertical-align: baseline;
 }
 
-/* Normalize file input width */
+/* Force file input width to be equal */
 input[type="file"] {
   width:100%;
 }
@@ -100,14 +93,14 @@ input {
 textarea {
   @include padding(half 0);
   height: auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 label {
   @include rhythm(bass-type-scale(base), 1);
   @include margin-bottom(half);
 }
-
-
 
 input[type=checkbox],
 input[type=radio] {
@@ -120,9 +113,4 @@ input[type=radio] {
     display: inline-block;
     width: auto;
   }
-}
-
-textarea {
-  width: 100%;
-  max-width: 100%;
 }
