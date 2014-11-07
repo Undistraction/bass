@@ -1,8 +1,13 @@
-//
-// Default typescale
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group config
+////
 
-$type-scale-map:
+/// Map storing type scales, with values keyed to semantic names
+///
+/// @type Map
+///
+$bass-type-scale-map:
 (
   default:
   (
@@ -13,4 +18,4 @@ $type-scale-map:
     large:               22px,
     x-large:             28px
   )
-);
+) !default;

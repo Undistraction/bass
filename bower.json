@@ -5,17 +5,25 @@
   "authors": [
     "Pedr Browne <pedr.browne@gmail.com>"
   ],
-  "description": "Personal Sass Toolkit",
+  "description": "Sass Toolkit",
   "keywords": [
     "sass"
   ],
   "license": "MIT",
-  "main": "sass/_bass.scss",
+  "main": "dist/_bass.scss",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "position": "~0.2.12",
+    "rhythm": "~0.1.4",
+    "box": "~0.0.17",
+    "compass-breakpoint": "~2.5.0",
+    "modular-scale": "~2.0.5",
+    "normalize-scss": "~3.0.1"
+  }
 }

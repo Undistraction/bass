@@ -1,0 +1,20 @@
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// A map containing custom units to use in rhythm, size, box and positional calculations.
+/// You can use any units you like. By default Bass uses fractional units and multiplies
+/// them with the rhythm unit.
+///
+/// @type Map
+///
+$custom-units-map: (
+  single: 1,
+  double: 2,
+  triple: 3,
+  quadruple: 4,
+  half: 0.5,
+  third: 0.333333333,
+  quarter: 0.25
+) !default;

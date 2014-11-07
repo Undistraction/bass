@@ -1,31 +1,61 @@
-//
-// Classes and mixins to help with layout
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne (From mixins by Maximilian Hoffmann)
+/// @group utils
+////
 
-@mixin center-known {
+/// Center content of a known width
+///
+@mixin h-center-known {
   margin: 0 auto;
 }
 
-.center-known
+/// Placeholder for the `h-center-known` mixin
+///
+%h-center-known
 {
-   @include center-known();
+   @include h-center-known();
 }
 
+/// Center any inline or inline-block contents of the element.
+///
 @mixin center-contents {
   text-align: center;
 }
 
-.center-contents
+/// Placeholder for the `center-contents` mixin
+///
+%center-contents
 {
    @include center-contents();
 }
 
-.left
-{
-  clear: left !important;
-}
+/// This mixin uses a pseudo-class to attach an invisible element of 100% height before
+/// its children. This element allows other children to use it to vertically center
+/// themselves.
+///
+/// @param {Bool} $horizontal (true)
+///   Should the child also be centered horizontally?
+///
+@mixin center-child-using-inline-block-hack($horizontal: true) {
+  @if $horizontal {
+    text-align:center; // Center children
+  }
 
-.right
-{
-  clear: right !important;
+  // Ghost item set to 100% that other item can use to align on
+  &:before {
+    content: '';
+    height: 100%;
+    vertical-align: middle;
+    display:inline-block;
+    margin-right: -0.25em; // Make up for gap between inline block elements
+
+  }
+
+  &>:first-child {
+    @if $horizontal {
+      text-align:left; // Reset align
+    }
+    vertical-align: middle;
+    display:inline-block;
+  }
 }

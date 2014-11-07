@@ -1,0 +1,61 @@
+////
+/// @author Pedr Browne (From mixins by Maximilian Hoffmann)
+/// @group utils
+////
+
+/// Get the rhythm for the given orientation.
+///
+/// @param {String} $orientation
+///   The orientation (horizontal | vertical).
+///
+/// @param {Number} $units (1)
+///   The number of units of rhythm.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use when looking up the unit.
+///
+/// @returns {Number}
+///   The rhythm.
+///
+@function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) {
+  @if $orientation != horizontal and $orientation != vertical {
+    $error: bass-throw-error($bass-invalid-value-error, "Orientation must be either `horizontal` or `vertical` but it was `#{$orientation}`");
+  }
+
+  $value: map-get-deep($bass-rhythm-value-map, $breakpoint, $orientation);
+  @if $value {
+    @return $value * $units;
+  }@else {
+    $error: bass-throw-error($bass-no-rhythm-error, "There is no rhythm for breakpoint `#{$breakpoint}`");
+  }
+};
+
+/// Get the vertical rhythm.
+///
+/// @param {Number} $units (1)
+///   The number of units of rhythm.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use when looking up the unit.
+///
+/// @returns {Number}
+///   The rhythm.
+///
+@function bass-v-rhythm-value( $units: 1, $breakpoint: default ) {
+  @return bass-rhythm-value(vertical, $units, $breakpoint);
+};
+
+/// Get the horizontal rhythm.
+///
+/// @param {Number} $units (1)
+///   The number of units of rhythm.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use when looking up the unit.
+///
+/// @returns {Number}
+///   The rhythm.
+///
+@function bass-h-rhythm-value( $units: 1, $breakpoint:default ) {
+  @return bass-rhythm-value(horizontal, $units, $breakpoint);
+};

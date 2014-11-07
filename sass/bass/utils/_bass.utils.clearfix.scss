@@ -1,9 +1,14 @@
-//
-// Modern Clearfix
-//
-// Source: [Bourbon](http://goo.gl/WXFG1F)
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
+/// A modern clearfix using a pseudo selector to append content after the
+/// element's contents to make it wrap floated content.
+///
+/// @output
+///  Properties to force an element wrap any floated chidren.
+///
 @mixin clearfix {
   &:after {
     content: "";
@@ -12,6 +17,10 @@
   }
 }
 
+/// A placeholder for the `clearfix` mixin
+///
+/// @see {Mixin} clearfix
+///
 %clearfix{
   @include clearfix;
 }

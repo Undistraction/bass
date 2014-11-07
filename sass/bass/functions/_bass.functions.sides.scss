@@ -1,0 +1,22 @@
+////
+/// @author Pedr Browne
+/// @group support
+////
+
+/// Get the oposite side.
+///
+/// @param {String} $side
+///   The side.
+///
+/// @returns {String}
+///   The oposite side.
+///
+@function opposite-side($side){
+  $sides:(
+    top: bottom,
+    bottom: top,
+    left: right,
+    right: left
+  );
+  @return map-get($sides, $side);
+}

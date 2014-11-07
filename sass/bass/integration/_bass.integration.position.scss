@@ -1,0 +1,19 @@
+////
+/// @author Pedr Browne
+/// @group integration
+////
+
+/// Override position's filter hook to enable custom unit parsing
+///
+/// @param {String} $key
+///   The value to parse.
+///
+/// @param {String} $orientation
+///   The orientation of the value (horizontal | vertical).
+///
+/// @returns {Number}
+///   The parsed value
+///
+@function position-parse-value-filter($key, $orientation){
+  @return bass-parse-custom-unit-filter($key, $orientation);
+}

@@ -1,9 +1,10 @@
-//
-// Default palette
-//
-// You can override any of these values by registering a palette of the same name.
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group config
+////
 
+// If you have defined a palette called default already, only keys you haven't defined
+// will be overwritten.
 @include register-palette(default,
   (
     default:
@@ -61,5 +62,11 @@
         background-color: darken(white, 5)
       )
     )
-  )
+  ), false
 );
+
+@include register-palette(null, (
+  success: green,
+  warning: orange,
+  danger: red
+));

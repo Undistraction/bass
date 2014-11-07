@@ -1,5 +1,6 @@
-@import 'bass/config/bass.config.palette';
-@import 'bass/config/bass.config.rhythm';
-@import 'bass/config/bass.config.typescale';
-@import 'bass/config/bass.config.typography';
-@import 'bass/config/bass.config.ui';
+@import 'config/bass.config.relative-font-sizing'; // Need to be first
+@import 'config/bass.config.custom-units';
+@import 'config/bass.config.errors';
+@import 'config/bass.config.palette';
+@import 'config/bass.config.typescale';
+@import 'config/bass.config.rhythm-value';

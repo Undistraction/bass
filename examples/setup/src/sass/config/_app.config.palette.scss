@@ -1,0 +1,27 @@
+//
+// Colours
+//
+// Map the colours you have defined to how they will be used. You can use palettes however you like,
+// but try to make the palettes as generic as possible so they can be used my multiple modules.
+// For example you might have 'quiet' and 'loud' palettes. Each palette can be as deeply nested as
+// you need. Stick to the same keys wherever possible. If you are using a specific key, consider if
+// it could be made more generic.
+//
+// Ultimately, all colours used in the appliction should be pulled from these palettes. In this way
+// you can tweak the application's colours from a single location.
+//
+// You can look up palette values using p(alpha, beta, charlie) or palatte(alpha, beta, charlie)
+// -------------------------------------------------------------------------------------------------
+
+@include register-palette(default,
+  (
+    default:
+    (
+      background-color:       red,
+      text-color:             $black,
+      text-color-quiet:       lighten($black, 15),
+      title-color:            $black,
+      divider-color:          darken($white, 2)
+    )
+  )
+);

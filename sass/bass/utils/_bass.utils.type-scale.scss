@@ -1,12 +1,49 @@
-//
-// A sinle location to store and lookup font-sizes using keywords.
-//
-// type-scale allows you to register and retrieve nested objects containing the size in pixels for
-// the given named value at the current breakpoint ( small, base, medium, large, x-large etc )
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
-$type-scale-map: ();
+/// Register a type-scale for use at a given breakpoint.
+///
+/// @param {Map} $type-scale
+///   A map containing key-values of name and font-size.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use this scale at.
+///
+/// @returns {null}
+///
+@function bass-register-type-scale($type-scale, $breakpoint:default){
+  $bass-type-scale-map: map-set($bass-type-scale-map, $breakpoint, $type-scale) !global;
+  @return null;
+}
 
-@function type-scale($position, $breakpoint: default) {
-  @return map-get-deep($type-scale-map, $breakpoint, $position);
+/// A mixin wrapping 'bass-register-type-scale`, allowing type-scale registration from the top-level
+///
+/// @see bass-register-type-scale
+///
+@mixin bass-register-type-scale($type-scale, $breakpoint:default){
+  $null: bass-register-type-scale($type-scale, $breakpoint:default);
+}
+
+/// Get the font-size for the given name
+///
+/// @param {Sting} $name
+///   The name of the font-size
+///
+/// @param {String} $breakpoint
+///   The name of the breakpoint
+///
+/// @returns {Number}
+///   The font-size.
+///
+/// @throws
+///
+@function bass-type-scale($name, $breakpoint:default) {
+  $value: map-get-deep($bass-type-scale-map, $breakpoint, $name);
+  @if $value {
+    @return $value;
+  }@else {
+    $error: bass-throw-error($bass-no-type-scale-value-error, "There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`");
+  }
 }

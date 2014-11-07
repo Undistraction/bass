@@ -1,0 +1,33 @@
+////
+/// @author Pedr Browne
+/// @group utils
+////
+
+// These items are used in test only
+$bass-last-error: null;
+$bass-under-test: false;
+$bass-error-thrown: false;
+
+/// By default, this function will throw a Sass error, but allows errors to be stopped during testing,
+/// with the error saved to `$bass-last-error` instead so tests can check it was thrown.
+///
+/// @param {String} $error
+///  The name of the error
+///
+/// @param {String} $message
+///  The error message
+///
+/// @returns {Map}
+///  A map of offsets to be rendered as CSS properties
+///
+@function bass-throw-error($error, $message) {
+  @if $bass-under-test {
+    @if not $bass-error-thrown {
+      $bass-error-thrown: true !global;
+      $bass-last-error: $error !global;
+    }
+  } @else {
+    @error "#{$error}: #{$message}";
+  }
+  @return null;
+}

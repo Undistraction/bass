@@ -1,0 +1,40 @@
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// The value passed to a function or mixin was invalid.
+///
+/// @type String
+///
+$bass-invalid-value-error: "Bass: Invalid Value Error";
+
+/// The breakpoint wasn't found.
+///
+/// @type String
+///
+$bass-no-breakpoint-error: "Bass: No Breakpoint Error";
+
+/// The rhythm wasn't found.
+///
+/// @type String
+///
+$bass-no-rhythm-error: "Bass: No Rhythm Error";
+
+/// The palette value wasn't found.
+///
+/// @type String
+///
+$bass-no-palette-value-error: "Bass: No Palette Value Error";
+
+/// The type-scale value wasn't found.
+///
+/// @type String
+///
+$bass-no-type-scale-value-error: "Bass: No Type-scale Value Error";
+
+/// The z-index item wasn't found.
+///
+/// @type String
+///
+$bass-no-z-index-item-error: "Bass: No Z-index Item Error";
