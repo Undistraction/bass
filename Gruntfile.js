@@ -172,4 +172,5 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy', ['sassdoc', 'build', 'bump-commit', 'shell:ghpages'])
   grunt.registerTask('patch', ['bump-only:patch', 'deploy']);
   grunt.registerTask('minor', ['bump-only:minor', 'deploy']);
+  grunt.registerTask('major', ['bump-only:major', 'deploy']);
 };
