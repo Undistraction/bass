@@ -24,13 +24,9 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          '<%= dir.src %>/bass/decorations/*.scss',
           '<%= dir.src %>/bass/functions/*.scss',
           '<%= dir.src %>/bass/config/*.scss',
           '<%= dir.src %>/bass/utils/*.scss',
-          '<%= dir.src %>/bass/modules/reset/*.scss',
-          '<%= dir.src %>/bass/modules/generic/*.scss',
-          '<%= dir.src %>/bass/modules/objects/*.scss'
         ],
         dest: '<%= dir.dist %>/_bass.scss',
       },

@@ -1,77 +1,27 @@
-/*! bass v0.2.12 – 17.10.2014 */
+/*! bass v0.2.12 – 07.11.2014 */
 
-//
-// Reusable Default shadows
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group support
+////
 
-// A uniform inset shadow for use on items like input fields
-@mixin inset-shadow {
-  box-shadow: inset 0 0 rem(4) rgba(0,0,0,0.2);
-}
-
-//
-// CSS-Only Shapes
-// -------------------------------------------------------------------------------------------------
-
-// Triangle pointing toward [top | bottom | left | right]
-@mixin triangle( $length, $direction, $colour ) {
-  $adjacent: opposite-position($direction);
-  border: $length solid transparent;
-  border-#{$adjacent}: $length solid $colour;
-  border-#{$direction}: 0;
-  height:0;
-  width:0;
-}
-
-@mixin circle($diameter, $color) {
-  width: $diameter;
-  height: $diameter;
-  background-color: $color;
-  border-radius: $diameter/2;
-}
-
-@function opposite-position($position){
-  $positions:(
-    top: bottom,
-    bottom: top,
-    left: right,
-    right: left
-  );
-  @return map-get($positions, $position);
-}
-
-
-//
-// Calculate lowest/highest values in the given range
-//
-// Source: Foundation 5
-// -------------------------------------------------------------------------------------------------
-
-@function lower-bound($range) {
-  @if length($range) <= 0 {
-    @return 0;
-  }
-  @return nth($range,1);
-}
-
-@function upper-bound($range) {
-  @if length($range) < 2 {
-    @return 999999999999;
-  }
-  @return nth($range, 2);
-}
-
-@function throw-error($location, $message){
-  @error "ERROR @#{$location} – #{$message}";
-}
-
-//
-// Functionality missing from Sass and Sassy Maps
-//
-// Note: I have a PR open adding this to Sassy maps
-// -------------------------------------------------------------------------------------------------
-
-// Perform a deep merge of two maps, optionally overwriting existing values
+/// Perform a deep merge of two maps, optionally overwriting existing values.
+/// Note: I have a PR open adding this to Sassy maps
+///
+/// @param {Map} $map-old
+///   The map to merge to.
+///
+/// @param {Map} $map-new
+///   The map to merge into `$map-old`
+///
+/// @param {Bool} $overwrite (true)
+///   How should the merge deal with existing values? If true, any existing values will be
+///   Overwritten. If false, existing values will be preserved. The logic handling overwriting
+///   Will fully recurse the map, so merging is based on path rather than node.
+///
+/// @return {Map}
+///   A new map resulting from the merge of `$map-old` and `$map-new`.
+///
 @function map-merge-deep($map-old, $map-new, $overwrite: true) {
   // Iterate through each value of the new map
   @each $key, $new-value in $map-new {
@@ -97,86 +47,200 @@
   @return $map-old;
 }
 
-//
-// Functions for managing vertical and horizontal rhythm
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne (Originally from Foundation 4 and 5)
+/// @group support
+////
 
-// Wrap Vertical-rhythm's ambiguous 'rhythm' function in a 'v-rhythm' function.
-@function v-rhythm( $lines: 1, $font-size: $base-font-size, $offset: 0) {
-  @return rhythm($lines, $font-size, $offset )
-};
-
-// Provide a place to pull a constant value for horizontal rhythm
-@function h-rhythm( $units: 1 ) {
-  $units: parse-lines($units); // Parse for keywords using sass-vertical-rhythm's keywords
-  @return $unit-of-horizontal-rhythm * $units;
-};
-
-//
 // Functions that allow you to think in pixels, but render rems (or ems)
-// Pixel fallbacks should be provided with a Postprocessor if required
-// -------------------------------------------------------------------------------------------------
+// Pixel fallbacks should be provided with a Postprocessor if required.
 
-// For use in media queries
-// Media queries don't pay attention to the html element's body size and always go with the browser default (16px)
+/// For use in media queries
+/// Media queries don't pay attention to the html element's body size and always go
+/// with the browser default (16px).
+///
+/// @param {List} $values
+///   The values to convert to root-ems.
+///
+/// @returns {List}
+///   The converted values
+///
+/// @access public
+///
 @function root-em($values) {
-  @return em($values, 16);
+  @return em($values, $base-rem-base);
 }
 
-// This is the old em-calc function from Foundation 4
-// The new em-calc function in Foundation 5 inexpicably delegates to rem-calc
-// Source: Foundation 4
-@function em($values, $base-value: $rem-base) {
+/// This is the old em-calc function from Foundation 4
+/// The new em-calc function in Foundation 5 inexpicably delegates to rem-calc
+/// Source: Foundation 4
+///
+/// @access public
+///
+@function em($values, $base-value: $base-rem-base) {
     $max: length($values); // Get the total number of parameters passed
 
-    // If there is only 1 parameter, then return it as an integer.
-    // This is done because a list can't be multiplied or divided even if it contains a single value
-    @if $max == 1 { @return convert-to-em(nth($values, 1), $base-value); }
+    @if $max == 1 {
+      @return px-em(nth($values, 1), $base-value);
+    }
 
-    $emValues: (); // This will eventually store the converted $values in a list
+    $emValues: ();
     @for $i from 1 through $max {
-        $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+        $emValues: append($emValues, px-em(nth($values, $i), $base-value));
     }
     @return $emValues;
 }
 
-// Convert a pixel value to its rem equivalent
-// Source: Foundation 5
-@function rem($values, $base-value: $rem-base) {
+/// Convert a pixel value to its rem equivalent
+/// Source: Foundation 5
+///
+/// @access public
+///
+@function rem($values) {
   $max: length($values);
 
-  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+  @if $max == 1 {
+    @return px-rem(nth($values, 1));
+  }
 
   $remValues: ();
   @for $i from 1 through $max {
-    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    $remValues: append($remValues, px-rem(nth($values, $i)));
   }
   @return $remValues;
 }
 
+/// Remove the unit from a number
+///
+/// @access private
+///
 @function strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
 
-@function convert-to-rem($value, $base-value: $rem-base) {
-  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
-  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+/// Convert value to rems
+///
+/// @access private
+///
+@function px-rem($value) {
+  // Strip units of both in case $value is passed in without units
+  $value: strip-unit($value) / strip-unit($base-rem-base) * 1rem;
+  @if $value == 0rem {
+    $value: 0;
+  }
   @return $value;
 }
 
-// Converts "px" to "em" using the $rem-base
-@function convert-to-em($value, $base-value: $rem-base) {
-    $value: strip-unit($value) / strip-unit($base-value) * 1em;
-    @if ($value == 0em) { $value: 0; } // Turn 0em into 0
-    @return $value;
+///
+/// @access private
+///
+@function px-em($value, $base-value: $base-rem-base) {
+  // Strip units of both in case $value is passed in without units
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if $value == 0em {
+    $value: 0;
+  }
+  @return $value;
 }
 
-//
-// Default palette
-//
-// You can override any of these values by registering a palette of the same name.
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group support
+////
 
+/// Get the oposite side.
+///
+/// @param {String} $side
+///   The side.
+///
+/// @returns {String}
+///   The oposite side.
+///
+@function opposite-side($side){
+  $sides:(
+    top: bottom,
+    bottom: top,
+    left: right,
+    right: left
+  );
+  @return map-get($sides, $side);
+}
+
+/// A map containing breakpoints used by breakpoint.
+///
+/// @type Map
+///
+$bass-breakpoints-map: () !default;
+
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// A map containing custom units to use in rhythm, size, box and positional calculations.
+/// You can use any units you like. By default Bass uses fractional units and multiplies
+/// them with the rhythm unit.
+///
+/// @type Map
+///
+$custom-units-map: (
+  single: 1,
+  double: 2,
+  triple: 3,
+  quadruple: 4,
+  half: 0.5,
+  third: 0.333333333,
+  quarter: 0.25
+) !default;
+
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// The value passed to a function or mixin was invalid.
+///
+/// @type String
+///
+$bass-invalid-value-error: "Bass: Invalid Value Error";
+
+/// The breakpoint wasn't found.
+///
+/// @type String
+///
+$bass-no-breakpoint-error: "Bass: No Breakpoint Error";
+
+/// The rhythm wasn't found.
+///
+/// @type String
+///
+$bass-no-rhythm-error: "Bass: No Rhythm Error";
+
+/// The palette value wasn't found.
+///
+/// @type String
+///
+$bass-no-palette-value-error: "Bass: No Palette Value Error";
+
+/// The type-scale value wasn't found.
+///
+/// @type String
+///
+$bass-no-type-scale-value-error: "Bass: No Type-scale Value Error";
+
+/// The z-index item wasn't found.
+///
+/// @type String
+///
+$bass-no-z-index-item-error: "Bass: No Z-index Item Error";
+
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+// If you have defined a palette called default already, only keys you haven't defined
+// will be overwritten.
 @include register-palette(default,
   (
     default:
@@ -234,47 +298,54 @@
         background-color: darken(white, 5)
       )
     )
-  )
+  ), false
 );
 
-//
-// Default rhythm settings
-// -------------------------------------------------------------------------------------------------
+@include register-palette(null, (
+  success: green,
+  warning: orange,
+  danger: red
+));
 
-$rhythm-map: (
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// Set the base font size for rem and em calculations.
+/// This should be the font-size of the `html` element
+///
+/// @type Number
+///
+$bass-rem-base: $rhythm-base-font-size !default;
+
+////
+/// @author Pedr Browne
+/// @group config
+////
+
+/// A map of horizontal and vertical rhythm values for rhythm, size, box and positional calculations
+///
+/// @type Map
+///
+$bass-rhythm-value-map: (
   default:(
-    base-font-size: 16px,
-    base-line-height: 22px
+    vertical: 22px,
+    horizontal: 22px
   )
-);
+) !default;
 
-// Vertical Rhythm
-// -------------------------------------------------------------------------------------------------
 
-// Vertical Rhythm configration
-$base-font-size: get-rhythm(base-font-size);
-$base-line-height: get-rhythm(base-line-height);
-$round-to-nearest-half-line: true;
-$rhythm-unit: 'rem';
-$relative-font-sizing : false;
-$min-line-padding: 0;
-@include establish-baseline;
+////
+/// @author Pedr Browne
+/// @group config
+////
 
-// Rem Conversion
-// -------------------------------------------------------------------------------------------------
-
-$rem-base: $base-font-size;
-
-// Horizontal Rhythm
-// -------------------------------------------------------------------------------------------------
-
-$unit-of-horizontal-rhythm: rhythm(); // Here we are using the same unit as the vertical
-
-//
-// Default typescale
-// -------------------------------------------------------------------------------------------------
-
-$type-scale-map:
+/// Map storing type scales, with values keyed to semantic names
+///
+/// @type Map
+///
+$bass-type-scale-map:
 (
   default:
   (
@@ -285,44 +356,42 @@ $type-scale-map:
     large:               22px,
     x-large:             28px
   )
-);
+) !default;
 
-//
-// Default typography
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
-$default-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-$default-font-weight: normal;
-
-$header-font-family: $default-font-family ;
-$header-font-weight: normal;
-$header-font-style: normal;
-
-$max-measure: 40em; // Maximum width of a paragraph proportional to the size of the font it uses
-
-//
-// Default UI
-// -------------------------------------------------------------------------------------------------
-
-$disabled-opacity: 0.7;
-$border: solid 1px darken(white, 10);
-
-$breakpoints: ();
-
+/// Get the breakpoint with the given name.
+///
+/// @param {String} $name
+///   The breakpoint name.
+///
+/// @returns {String}
+///   The breakpoint.
+///
+/// @throws bass-no-breakpoint-error
+///
 @function get-breakpoint($name){
-  @if map-has-key($breakpoints, $name) {
-    @return map-get($breakpoints, $name);
+  @if map-has-key($bass-breakpoints-map, $name) {
+    @return map-get($bass-breakpoints-map, $name);
   } @else {
-    @error "@get-breakpoint There is no breakpoint named '#{$name}' in the $breakpoints map '#{inspect($breakpoints)}"
+    $error: bass-throw-errror($bass-no-breakpoint-error, "There is no breakpoint named '#{$name}'");
   }
 }
 
-//
-// Modern Clearfix
-//
-// Source: [Bourbon](http://goo.gl/WXFG1F)
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
+/// A modern clearfix using a pseudo selector to append content after the
+/// element's contents to make it wrap floated content.
+///
+/// @output
+///  Properties to force an element wrap any floated chidren.
+///
 @mixin clearfix {
   &:after {
     content: "";
@@ -331,113 +400,253 @@ $breakpoints: ();
   }
 }
 
+/// A placeholder for the `clearfix` mixin
+///
+/// @see {Mixin} clearfix
+///
 %clearfix{
   @include clearfix;
 }
 
-@mixin size($width, $height) {
-  width: $width;
-  height: $height;
+////
+/// @author Pedr Browne
+/// @group utils
+////
+
+/// Parse custom values into distance values.
+///
+/// @param {String} $key
+///   The value to parse.
+///
+/// @param {String} $orientation
+///   The orientation of the value (horizontal | vertical).
+///
+/// @returns {Number}
+///   The parsed value
+///
+/// @throws $bass-invalid-value-error
+///
+@function bass-parse-custom-unit-filter($key, $orientation){
+  @if map-has-key($custom-units-map, $key) {
+    // Find the unit
+    $unit: map-get($custom-units-map, $key);
+    // Use the unit with the rhythm value for the orientation
+    @return bass-rhythm-value($orientation, $unit);
+  } @else {
+    @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
+  }
 }
 
-//
-// Mixins and classes for improving font rendering and display
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
-// Switch font smoothing on (great for light-on-dark text)
-// Source: http://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+// These items are used in test only
+$bass-last-error: null;
+$bass-under-test: false;
+$bass-error-thrown: false;
+
+/// By default, this function will throw a Sass error, but allows errors to be stopped during testing,
+/// with the error saved to `$bass-last-error` instead so tests can check it was thrown.
+///
+/// @param {String} $error
+///  The name of the error
+///
+/// @param {String} $message
+///  The error message
+///
+/// @returns {Map}
+///  A map of offsets to be rendered as CSS properties
+///
+@function bass-throw-error($error, $message) {
+  @if $bass-under-test {
+    @if not $bass-error-thrown {
+      $bass-error-thrown: true !global;
+      $bass-last-error: $error !global;
+    }
+  } @else {
+    @error "#{$error}: #{$message}";
+  }
+  @return null;
+}
+
+////
+/// @author Pedr Browne (From mixins by Maximilian Hoffmann)
+/// @group utils
+////
+
+/// Switch font smoothing on (great for light-on-dark text).
+///
+/// @see http://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+///
+/// @output Properties to smooth font rendering.
+///
 @mixin font-smoothing-on {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/// Switch font smoothing off.
+///
+/// @see http://maximilianhoffmann.com/posts/better-font-rendering-on-osx.
+///
+/// @output Reset properties for smooth font-rendering to default.
+///
 @mixin font-smoothing-off {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
 }
 
-//
-// Grid mixins for use with Susy Next
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne (From mixins by Maximilian Hoffmann)
+/// @group utils
+////
 
-@mixin span-centered($columns)
-{
-  width: span($columns);
-  clear: both;
-  float: none;
-  margin: 0 auto !important;
-}
-
-//
-// Classes and mixins to help with layout
-// -------------------------------------------------------------------------------------------------
-
-@mixin center-known {
+/// Center content of a known width
+///
+@mixin h-center-known {
   margin: 0 auto;
 }
 
-.center-known
+/// Placeholder for the `h-center-known` mixin
+///
+%h-center-known
 {
-   @include center-known();
+   @include h-center-known();
 }
 
+/// Center any inline or inline-block contents of the element.
+///
 @mixin center-contents {
   text-align: center;
 }
 
-.center-contents
+/// Placeholder for the `center-contents` mixin
+///
+%center-contents
 {
    @include center-contents();
 }
 
-.left
-{
-  clear: left !important;
+/// This mixin uses a pseudo-class to attach an invisible element of 100% height before
+/// its children. This element allows other children to use it to vertically center
+/// themselves.
+///
+/// @param {Bool} $horizontal (true)
+///   Should the child also be centered horizontally?
+///
+@mixin center-child-using-inline-block-hack($horizontal: true) {
+  @if $horizontal {
+    text-align:center; // Center children
+  }
+
+  // Ghost item set to 100% that other item can use to align on
+  &:before {
+    content: '';
+    height: 100%;
+    vertical-align: middle;
+    display:inline-block;
+    margin-right: -0.25em; // Make up for gap between inline block elements
+
+  }
+
+  &>:first-child {
+    @if $horizontal {
+      text-align:left; // Reset align
+    }
+    vertical-align: middle;
+    display:inline-block;
+  }
 }
 
-.right
-{
-  clear: right !important;
+////
+/// @author Pedr Browne
+/// @group utils
+////
+
+/// A Map of palettes to encourage conistancy throughout the application.
+///
+/// @type Map
+///
+$bass-palette-map: () !default;
+
+/// Look up a color value in the `$bass-palette-map`.
+///
+/// @param {List} $path
+///   A path to the desired color.
+///
+/// @returns {Color}
+///   The colour value matching the supplied path.
+///
+/// @throws $bass-map-path-error
+///
+@function palette($path...) {
+  $value: map-get-deep($bass-palette-map, $path);
+  @if $value {
+    @return $value;
+  } @else {
+    @return bass-throw-error($bass-no-palette-value-error, "The supplied path didn't resolve to a color: `#{$path}` in map `#{inspect($bass-palette-map)}`");
+  }
 }
 
-//
-// Palette Map allows you to register and retrieve nested objects containing color palettes
-// -------------------------------------------------------------------------------------------------
-
-$palette-map: ();
-
-// Look up a color value in the palette map
-@function palette($palette-path...) {
-  @return map-get-deep($palette-map, $palette-path);
+/// Shorthand for `palette`
+///
+/// @see palette
+///
+@function p($path...) {
+  @return palette($path...);
 }
 
-// Shorthand
-@function p($palette-path...) {
-  @return palette($palette-path...);
-}
-
-// Register a palette to make it available using the c() function
-// If no name is given, the values in $palette are added to $palette map's top level
-@function register-palette($name:null, $palette:null, $overwrite:true) {
+/// Register a palette to make it available using the palette() function.
+/// If no name is given, the values in `$palette` are added to $palette map's top level
+///
+/// @param {String} $name
+///   The name of the palette.
+///
+/// @param {Map} $palette
+///   A map of colour values.
+///
+/// @param {Bool} $overwrite (true)
+///   Should this palette overwrite existing values?
+///
+/// @return {null}
+///
+@function register-palette($name, $palette, $overwrite:true) {
   // Merge, overriding existing values
   @if $name {
-    $palette-map: map-merge-deep($palette-map, ($name: $palette), $overwrite) !global;
+    $bass-palette-map: map-merge-deep($bass-palette-map, ($name: $palette), $overwrite) !global;
   }@else{
-    $palette-map: map-merge-deep($palette-map, $palette, $overwrite) !global;
+    $bass-palette-map: map-merge-deep($bass-palette-map, $palette, $overwrite) !global;
   }
-  @return none;
+  @return null;
 }
 
-// Because sass doesn't support function invocation at a root level it has to be done from within a mixin
-@mixin register-palette($name:null, $palette:null, $overwrite:true){
+/// A mixin to allow `register-pallette` to be called from the root.
+///
+/// @see register-palette
+///
+@mixin register-palette($name, $palette, $overwrite:true){
   $temp: register-palette($name, $palette, $overwrite);
 }
 
-//
-// Placeholder mixins
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
-// Stand in for content that has yet to be added
+/// A quick way to add a titled block to represent content that will be added later.
+///
+/// @param {String} $name
+///   The title to display.
+///
+/// @param {Number} $min-width
+///   A min-width to simulate content.
+///
+/// @param {Number} $min-height
+///   A min-height to simulate content.
+///
+/// @outputs Styles to make an element a placeholder
 @mixin Placeholder($name, $min-width, $min-height: 0){
   background-color: #DDD;
   min-width: $min-width;
@@ -449,537 +658,160 @@ $palette-map: ();
   }
 }
 
-//
-// A sinle location to store and lookup font-sizes using keywords.
-//
-// type-scale allows you to register and retrieve nested objects containing the size in pixels for
-// the given named value at the current breakpoint ( small, base, medium, large, x-large etc )
-// -------------------------------------------------------------------------------------------------
+////
+/// @author Pedr Browne (From mixins by Maximilian Hoffmann)
+/// @group utils
+////
 
-$type-scales: ();
-
-@mixin register-type-scale($breakpoint, $type-scale){
-  $type-scales: map-set($type-scales, $breakpoint, $type-scale) !global;
-}
-
-@function type-scale($breakpoint, $size) {
-  @return map-get-deep($type-scales, $breakpoint, $size);
-}
-
- //
- // Classes and mixins to help with hiding and showing elements
- // -------------------------------------------------------------------------------------------------
-
-.is-text-hidden
-{
- text-indent: 100%;
- white-space: nowrap;
- overflow: hidden;
-}
-
-.is-hidden
-{
-  display: none;
-}
-
-// Makes an element visually hidden, but accessible.
-// Source: Foundation 5
-// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-@mixin is-invisible {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
-
-// Turns off the element-invisible effect.
-@mixin is-invisible-off($position:static) {
-  position: $position !important;
-  height: auto;
-  width: auto;
-  overflow: visible;
-  clip: auto;
-}
-
-.show-for-all
-{
-  @include element-invisible-off;
-}
-
-//
-// Manage the z-index of elements in a central location
-// -------------------------------------------------------------------------------------------------
-
-$z-index-map: () !default;
-
-// Constants
-$z-index-bottom: 0;
-$z-index-top: 9999999;
-
-// Look up an element's z-index using a keyword
-@function layer-z-index($layers...) {
-  //
-  @return map-get-deep($z-index-map, $layers...);
-}
-
-@mixin z-index($layers...) {
-  z-index: layer-z-index($layers);
-}
-
-// Set box-sizing globally to handle padding and border widths
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-html {
-  overflow-y: scroll;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-}
-
-%button {
-  @include adjust-font-size-to(type-scale(base), 2);
-  padding-left: h-rhythm(half);
-  padding-right: h-rhythm(half);
-  display: block;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  -webkit-appearance: none;
-  -webkit-border-radius:0;
-  color: c(default, button, text-color);
-  background-color: c(default, button, background-color);
-
-  &.is-active {
-    color: c(default, button, active, text-color);
-    background-color: c(default, button, active, background-color);
+/// Get the rhythm for the given orientation.
+///
+/// @param {String} $orientation
+///   The orientation (horizontal | vertical).
+///
+/// @param {Number} $units (1)
+///   The number of units of rhythm.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use when looking up the unit.
+///
+/// @returns {Number}
+///   The rhythm.
+///
+@function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) {
+  @if $orientation != horizontal and $orientation != vertical {
+    $error: bass-throw-error($bass-invalid-value-error, "Orientation must be either `horizontal` or `vertical` but it was `#{$orientation}`");
   }
 
-  &.is-disabled,
-  &.is-disabled:hover {
-    opacity: $disabled-opacity;
-    cursor: not-allowed;
-    color: c(default, button, disabled, text-color);
-    background-color: c(default, button, disabled, background-color);
+  $value: map-get-deep($bass-rhythm-value-map, $breakpoint, $orientation);
+  @if $value {
+    @return $value * $units;
+  }@else {
+    $error: bass-throw-error($bass-no-rhythm-error, "There is no rhythm for breakpoint `#{$breakpoint}`");
   }
+};
 
-  &:hover,
-  &:focus {
-    background-color: c(default, button, hover, background-color);
-  }
+/// Get the vertical rhythm.
+///
+/// @param {Number} $units (1)
+///   The number of units of rhythm.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use when looking up the unit.
+///
+/// @returns {Number}
+///   The rhythm.
+///
+@function bass-v-rhythm-value( $units: 1, $breakpoint: default ) {
+  @return bass-rhythm-value(vertical, $units, $breakpoint);
+};
 
-  .Icon {
-    @include adjust-font-size-to(type-scale(base), 2);
+/// Get the horizontal rhythm.
+///
+/// @param {Number} $units (1)
+///   The number of units of rhythm.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use when looking up the unit.
+///
+/// @returns {Number}
+///   The rhythm.
+///
+@function bass-h-rhythm-value( $units: 1, $breakpoint:default ) {
+  @return bass-rhythm-value(horizontal, $units, $breakpoint);
+};
+
+////
+/// @author Pedr Browne
+/// @group utils
+////
+
+/// Register a type-scale for use at a given breakpoint.
+///
+/// @param {Map} $type-scale
+///   A map containing key-values of name and font-size.
+///
+/// @param {String} $breakpoint (default)
+///   The breakpoint to use this scale at.
+///
+/// @returns {null}
+///
+@function bass-register-type-scale($type-scale, $breakpoint:default){
+  $bass-type-scale-map: map-set($bass-type-scale-map, $breakpoint, $type-scale) !global;
+  @return null;
+}
+
+/// A mixin wrapping 'bass-register-type-scale`, allowing type-scale registration from the top-level
+///
+/// @see bass-register-type-scale
+///
+@mixin bass-register-type-scale($type-scale, $breakpoint:default){
+  $null: bass-register-type-scale($type-scale, $breakpoint:default);
+}
+
+/// Get the font-size for the given name
+///
+/// @param {Sting} $name
+///   The name of the font-size
+///
+/// @param {String} $breakpoint
+///   The name of the breakpoint
+///
+/// @returns {Number}
+///   The font-size.
+///
+/// @throws
+///
+@function bass-type-scale($name, $breakpoint:default) {
+  $value: map-get-deep($bass-type-scale-map, $breakpoint, $name);
+  @if $value {
+    @return $value;
+  }@else {
+    $error: bass-throw-error($bass-no-type-scale-value-error, "There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`");
   }
 }
 
-button,
-input[type="submit"] {
-  @extend %button;
-}
+////
+/// @author Pedr Browne
+/// @group utils
+////
 
-/* Adjust margin for form elements below */
-input[type="file"],
-input[type="checkbox"],
-input[type="radio"] {
-  margin: 0;
-}
+/// A map containing other maps which each represent a z-index scope.
+/// By always looking up modules' z-index values here the depth-relationships between
+/// modules ar clear.
+///
+/// @type Map
+///
+$bass-z-index-map: () !default;
 
-input,
-textarea,
-select
-{
-  @include margin-trailer(1);
-}
-
-/* Override normalize */
-input[type="search"] {
-  box-sizing: border-box;
-}
-
-
-/* We use this to get basic styling on all basic form elements */
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="month"],
-input[type="week"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-textarea {
-  @include inset-shadow;
-  border: none !important;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-  color: c(default, default, text-color);
-  border-radius: 6px;
-  background: c(default, form, input, background-color);
-}
-
-select
-{
-  @include adjust-font-size-to(type-scale(base), 2);
-  border: $border;
-  width: 100%;
-  padding: 0 h-rhythm(0.5);
-  border-radius: 0;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-}
-
-input[type="submit"] {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-}
-
-/* Respect enforced amount of rows for textarea */
-textarea[rows] {
-  height: auto;
-}
-
-
-
-input[type="checkbox"] + label,
-input[type="radio"] + label {
-  display: inline-block;
-  margin-left: h-rhythm(0.5);
-  margin-bottom: 0;
-  vertical-align: baseline;
-}
-
-/* Normalize file input width */
-input[type="file"] {
-  width:100%;
-}
-
-form {
-  @include margin-trailer;
-}
-
-input,
-label {
-  display: block;
-  width: 100%;
-}
-
-input,
-textarea {
-  padding-left: h-rhythm(0.5);
-  padding-right: h-rhythm(0.5);
-}
-
-input {
-  @include adjust-font-size-to(type-scale(base), 2);
-}
-
-textarea {
-  @include padding-leader(0.5);
-  @include padding-trailer(0.5);
-  height: auto;
-}
-
-label {
-  @include adjust-font-size-to(type-scale(base), 1);
-  @include margin-trailer(0.5);
-}
-
-
-
-input[type=checkbox],
-input[type=radio] {
-  @include margin-trailer(1);
-  display: inline-block;
-  width: auto;
-
-  &+label
-  {
-    display: inline-block;
-    width: auto;
-  }
-}
-
-textarea {
-  width: 100%;
-  max-width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $header-font-family;
-  font-weight: $header-font-weight;
-  font-style: $header-font-style;
-  margin: 0;
-  padding: 0;
-}
-
-hr {
-  clear: both;
-  height: 0;
-  border: none;
-  border-top: $border;
-}
-
-img {
-  display: inline-block;
-  vertical-align: middle; // Remove whitespace
-  margin: 0;
-  max-width: 100%;
-  height: auto;
-}
-
-figure > img
-{
-  display:block;
-}
-
-a {
-  text-decoration: none;
-  color: c(default, link, text-color);
-  transition: background-color 0.4s ease-in-out;
-  transition: color 0.4s ease-in-out;
-
-  &:hover,
-  &:focus
-  {
-    color: c(default, link, hover, text-color);
+/// Look up an element's z-index using a keyword
+///
+/// @param {List} $path...
+///   A path to the item, including its context and name.
+///
+/// @returns {Number}
+///   The item's `z-index`.
+///
+/// @throws $bass-no-z-index-item-error
+///
+@function bass-z-index($path...) {
+  $value: map-get-deep($bass-z-index-map, $path...);
+  @if $value {
+    @return $value;
+  }@else {
+    $error: bass-throw-error($bass-no-z-index-item-error, "There is no item with a z-index using the path `#{$path}`");
   }
 
-  &.is-active
-  {
-    color: c(default, link, active, text-color);
-  }
-
-  &.is-disabled,
-  &.is-disabled:hover
-  {
-    color: c(default, link, disabled, text-color) !important;
-    opacity:0.2;
-  }
-
-  img
-  {
-    border:none;
-  }
+  @return map-get-deep($bass-z-index-map, $path...);
 }
 
-ul,
-ol {
-  font-size: type-scale(base);
-  line-height: inherit;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/// Render a module's z-index
+///
+/// @param {List} $path...
+///   A path to the item, including its context and name.
+///
+/// @outputs
+///   The item's z-index
+///
+@mixin bass-z-index($path...) {
+  z-index: bass-z-index($path...);
 }
-
-body {
-  line-height: 1.3;
-  font-family: $default-font-family;
-  font-weight: $default-font-weight;
-}
-
-p {
-  @include margin-trailer(1);
-  @include adjust-font-size-to(type-scale(base));
-  @extend %WithMaxMeasure;
-  font-family: $default-font-family;
-  line-height: inherit;
-  color: c(default, default, text-color);
-}
-
-%WithMaxMeasure {
-  max-width: $max-measure;
-}
-
-blockquote {
-  @extend %WithMaxMeasure;
-  margin: 0;
-  padding: 0 0 0 h-rhythm(single);
-  border-left: $border;
-}
-
-cite {
-  font-style: italic;
-  display: block;
-  &:before
-  {
-    content: "\2014 \00A0";
-  }
-}
-
-table {
-  border-collapse: collapse;
-  table-layout: fixed;
-  margin: 0;
-  width: 100%;
-}
-
-th {
-  border-bottom: $border;
-  padding: 0;
-  font-weight: bold;
-  text-align: left;
-}
-
-td {
-  border-bottom: $border;
-  padding: 0;
-}
-
-tr,
-td,
-th {
-  vertical-align: middle;
-}
-
-.AlertBox {
-  p,
-  .Icon {
-    color: c(default, default, text-color-loud);
-  }
-
-  &--success {
-    background-color: c(success-color);
-  }
-
-  &--alert {
-    background-color: c(warning-color);
-  }
-}
-
-.Button {
-  @extend %button;
-}
-
-.Icon {
-  opacity: 0.5;
-  margin-right: h-rhythm(half);
-
-  &:only-child {
-    opacity:1;
-    margin-right: 0;
-  }
-}
-
-.IconButton-Label,
-.IconButton-Icon {
-  @include adjust-font-size-to(type-scale(base));
-}
-
-.IconButton-Icon {
-  margin-right: 0;
-}
-
-.IconButton-Label {
-  //@extend .hide-for-small-only;
-  margin-left: h-rhythm(third);
-  // @include breakpoint($medium-up) {
-  //   display: inline-block;
-  // }
-}
-
-.List--alphabetised {
-  font-size: type-scale(base);
-  line-height: inherit;
-  list-style: upper-alpha;
-  margin-left: h-rhythm();
-}
-
-.List--bulleted {
-  font-size: type-scale(base);
-  line-height: inherit;
-  list-style: disc;
-  margin-left: h-rhythm();
-}
-
-.List--horizontal {
-  @include clearfix;
-
-  li
-  {
-    @include clearfix;
-    @include adjust-font-size-to(type-scale(base), 1);
-    float: left;
-    margin-left: h-rhythm(half);
-    &:first-child
-    {
-      margin-left: 0;
-    }
-  }
-}
-
-.List--numbered {
-  font-size: type-scale(base);
-  line-height: inherit;
-  list-style: decimal;
-  margin-left: h-rhythm();
-}
-
-.PrimaryHeader {
-  //@include full;
-  width: 100%;
-  position:relative;
-
-  .PrimaryHeader-Title {
-    @include margin-trailer(0.5);
-  }
-
-  .PrimaryHeader-Subtitle {
-    @include adjust-font-size-to(type-scale(base), 1);
-    text-align: center;
-    color: c(default, default, text-color-quiet)
-  }
-
-  h1+.Subtitle {
-    @include margin-leader(0);
-  }
-
-  @include margin-trailer(0.5);
-}
-
-// Sticky Footer
-// Source: http://ryanfait.com/sticky-footer/layout.css
-//
-// !important: This Sticky footer relies on a known height for the footer
-// For a responsive sticky footer use the table technique or JavaScript
-//--------------------------------------------------------------------------------------------------
-
-// You must be sure that your footer is also styled to adopt this height, or have this height reflect
-// your footer's height
-$default-footer-height: rem(50) !default;
-
-.StickyFooter-contentWrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto (-$default-footer-height); // the bottom margin is the negative value of the footer's height
-}
-
-.StickyFooter-push
-{
-  height: $default-footer-height;
-}
-

@@ -10,7 +10,6 @@
   "groups": {
     "config": "Config",
     "integration": "Integration",
-    "decorations": "Decorations",
     "support": "Support",
     "utils": "Utils"
   },
