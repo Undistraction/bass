@@ -97,7 +97,8 @@ module.exports = function(grunt) {
         'src': './<%= dir.src %>',
         'dest': './docs',
         'options': {
-          'config': './.sassdocrc'
+          'config': './.sassdocrc',
+          'force': true
         }
       }
     },
