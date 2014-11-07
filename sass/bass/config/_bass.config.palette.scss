@@ -64,3 +64,9 @@
     )
   ), false
 );
+
+@include register-palette(null, (
+  success: green,
+  warning: orange,
+  danger: red
+));

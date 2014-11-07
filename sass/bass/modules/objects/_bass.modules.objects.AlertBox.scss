@@ -5,10 +5,14 @@
   }
 
   &--success {
-    background-color: p(success-color);
+    background-color: p(success);
   }
 
-  &--alert {
-    background-color: p(warning-color);
+  &--warning {
+    background-color: p(warning);
+  }
+
+  &--danger {
+    background-color: p(danger);
   }
 }
