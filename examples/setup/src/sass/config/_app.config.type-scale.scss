@@ -11,8 +11,7 @@ $ms-ratio: $golden;
 // Default
 $ms-base: rem(14);
 
-@include register-type-scale(
-  default,
+@include bass-register-type-scale(
   (
     x-small:    ms(-2),
     small:      ms(-1),
@@ -23,21 +22,3 @@ $ms-base: rem(14);
     xxx-large:  ms(4)
   )
 );
-
-// Medium
-$ms-base: rem(16);
-
-@include register-type-scale(
-  medium,
-  (
-    x-small:    ms(-2),
-    small:      ms(-1),
-    base:       ms(0),
-    large:      ms(1),
-    x-large:    ms(2),
-    xx-large:   ms(3),
-    xxx-large:  ms(4)
-  )
-);
-
-@error inspect($type-scales);

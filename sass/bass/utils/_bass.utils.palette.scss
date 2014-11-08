@@ -19,7 +19,7 @@ $bass-palette-map: () !default;
 ///
 /// @throws $bass-map-path-error
 ///
-@function palette($path...) {
+@function bass-palette($path...) {
   $value: map-get-deep($bass-palette-map, $path);
   @if $value {
     @return $value;
@@ -33,7 +33,7 @@ $bass-palette-map: () !default;
 /// @see palette
 ///
 @function p($path...) {
-  @return palette($path...);
+  @return bass-palette($path...);
 }
 
 /// Register a palette to make it available using the palette() function.
@@ -50,7 +50,7 @@ $bass-palette-map: () !default;
 ///
 /// @return {null}
 ///
-@function register-palette($name, $palette, $overwrite:true) {
+@function bass-register-palette($name, $palette, $overwrite:true) {
   // Merge, overriding existing values
   @if $name {
     $bass-palette-map: map-merge-deep($bass-palette-map, ($name: $palette), $overwrite) !global;
@@ -64,6 +64,6 @@ $bass-palette-map: () !default;
 ///
 /// @see register-palette
 ///
-@mixin register-palette($name, $palette, $overwrite:true){
-  $temp: register-palette($name, $palette, $overwrite);
+@mixin bass-register-palette($name, $palette, $overwrite:true){
+  $temp: bass-register-palette($name, $palette, $overwrite);
 }

@@ -6,23 +6,9 @@
 @import "bass/bass.functions";
 @import "bass/bass.utils";
 
-// // App Vars & Mixins
+// App Vars & Mixins
 @import "fonts/*";
 
-// // Configuration
-@import "bass/bass.config";
+// Configuration
 @import "app.config";
-
-// // App Themes
-// @import "themes/*";
-// @import "decorations/*";
-
-// // Bass Modules (Components)
-// @import "bass/modules/reset/*";
-//@import "bass/modules/generic/*";
-// @import "bass/modules/objects/*";
-
-// // App Modules (Components)
-// @import "app.modules";
-
-// @import "app.shame";
+@import "bass/bass.config";

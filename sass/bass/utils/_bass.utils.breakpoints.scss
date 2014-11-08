@@ -13,7 +13,7 @@
 ///
 /// @throws bass-no-breakpoint-error
 ///
-@function get-breakpoint($name){
+@function bass-breakpoint($name){
   @if map-has-key($bass-breakpoints-map, $name) {
     @return map-get($bass-breakpoints-map, $name);
   } @else {

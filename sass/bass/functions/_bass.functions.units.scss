@@ -93,3 +93,27 @@
   }
   @return $value;
 }
+
+/// Parse custom values into distance values.
+///
+/// @param {String} $key
+///   The value to parse.
+///
+/// @param {String} $orientation
+///   The orientation of the value (horizontal | vertical).
+///
+/// @returns {Number}
+///   The parsed value
+///
+/// @throws $bass-invalid-value-error
+///
+@function bass-parse-custom-unit-filter($key, $orientation){
+  @if map-has-key($custom-units-map, $key) {
+    // Find the unit
+    $unit: map-get($custom-units-map, $key);
+    // Use the unit with the rhythm value for the orientation
+    @return bass-rhythm-value($orientation, $unit);
+  } @else {
+    @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
+  }
+}
