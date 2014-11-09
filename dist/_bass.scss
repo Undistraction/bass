@@ -1,4 +1,4 @@
-/*! bass v1.1.0 – 09.11.2014 */
+/*! bass v1.1.1 – 09.11.2014 */
 
 ////
 /// @author Pedr Browne
@@ -229,79 +229,6 @@ $bass-error-thrown: false;
 /// @type Map
 ///
 $bass-breakpoints-map: () !default;
-
-////
-/// @author Pedr Browne
-/// @group config
-////
-
-// If you have defined a palette called default already, only keys you haven't defined
-// will be overwritten.
-@include bass-register-palette(default,
-  (
-    default:
-    (
-      background-color:       white,
-      text-color:             black,
-      text-color-quiet:       lighten(black, 15),
-      text-color-loud:        white,
-      title-color:            black,
-      divider-color:          darken(white, 2)
-    ),
-
-    link:
-    (
-      text-color:             black,
-      text-color-quiet:       lighten( black, 20),
-      hover:
-      (
-        text-color:           lighten( black, 60),
-      ),
-      disabled:
-      (
-        text-color:           darken( black, 90),
-      ),
-      active:
-      (
-        text-color: lighten( black, 60)
-      )
-    ),
-
-    button:
-    (
-      text-color:             white,
-      background-color:       black,
-      hover:
-      (
-        text-color:           darken(white, 20),
-        background-color:     lighten( black, 40)
-      ),
-      disabled:
-      (
-        text-color:           darken( white, 30),
-        background-color:     darken( white, 60)
-      ),
-      active:
-      (
-        text-color: darken( white, 20),
-        background-color: lighten( black, 15)
-      )
-    ),
-
-    form:(
-      input:
-      (
-        background-color: darken(white, 5)
-      )
-    )
-  ), false
-);
-
-@include bass-register-palette(null, (
-  success: green,
-  warning: orange,
-  danger: red
-));
 
 ////
 /// @author Pedr Browne
