@@ -126,14 +126,14 @@
         expect(
           h-rhythm(1, small)
         ),
-        to( equal(14px) )
+        to( equal( rem(14px)) )
       );
 
       @include should(
         expect(
           v-rhythm(1, small)
         ),
-        to( equal(12px) )
+        to( equal( rem(12px) ))
       );
     }
   }

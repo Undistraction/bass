@@ -53,7 +53,11 @@
 ///   The rhythm.
 ///
 @function v-rhythm( $units: 1, $breakpoint: default ) {
-  @return bass-rhythm-value(vertical, $units, $breakpoint);
+  $pixel-value: bass-rhythm-value(vertical, $units, $breakpoint);
+  @if $bass-rhythm-unit == rem {
+    @return rem($pixel-value);
+  }
+  @return $pixel-value;
 };
 
 /// Get the horizontal rhythm.
@@ -67,6 +71,10 @@
 /// @returns {Number}
 ///   The rhythm.
 ///
-@function h-rhythm( $units: 1, $breakpoint:default ) {
-  @return bass-rhythm-value(horizontal, $units, $breakpoint);
+@function h-rhythm( $units: 1, $breakpoint: default ) {
+  $pixel-value: bass-rhythm-value(horizontal, $units, $breakpoint);
+  @if $bass-rhythm-unit == rem {
+    @return rem($pixel-value);
+  }
+  @return $pixel-value;
 };

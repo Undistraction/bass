@@ -10,6 +10,12 @@
 ///
 $bass-rem-base: $rhythm-base-font-size !default;
 
+/// Set the value for h-rhythm and v-rhythm to output in.
+///
+/// @type String
+///
+$bass-rhythm-unit: rem;
+
 /// A map containing custom units to use in rhythm, size, box and positional calculations.
 /// You can use any units you like. By default Bass uses fractional units and multiplies
 /// them with the rhythm unit.
