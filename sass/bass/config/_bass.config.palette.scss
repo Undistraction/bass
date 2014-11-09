@@ -5,7 +5,7 @@
 
 // If you have defined a palette called default already, only keys you haven't defined
 // will be overwritten.
-@include register-palette(default,
+@include bass-register-palette(default,
   (
     default:
     (
@@ -65,7 +65,7 @@
   ), false
 );
 
-@include register-palette(null, (
+@include bass-register-palette(null, (
   success: green,
   warning: orange,
   danger: red
