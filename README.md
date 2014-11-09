@@ -1,58 +1,26 @@
 # Bass
 
-Sass toolkit made from elements of Compass, Bourbon, Foundation, Inuit etc and including useful tools for development.
+Bass is a thin layer of configuration and useful functions for your application.
 
-It is intended as a modular, bare-minimum kit that leverages existing libs wherever possible. It takes the opinion that pixel fallbacks and vendor-prefixing have no place in Sass and should be dealt with by a postprocessor.
+# Config
 
-It targets IE9+ and latest versions of everything else.
+It allows configuration of the following four key areas:
 
-## Units
+1. Rhythm
 
-Use `rem(16)` to calculate rem values using pixels. If you need pixel fallback, insert using a postprocessor such as [Node Pixrem](https://github.com/robwierzbowski/node-pixrem).
+Most importantly you configure a series of vertical and horizontal rhythms for your project.
+The default rhythm will be used if no breakpoint is supplied to the `bass-rythm-value` function.
 
-## Prefixes
+By storing a set of horizontal and vertical rhythms for each breakpoint, you ensure consistancy throughout the project.
 
-There are no mixins to support vendor prefixes. Use the unprefixed version then postprocess with [Autoprefixer](https://github.com/postcss/autoprefixer) to insert required vendor prefixes.
+2. Breakpoints
 
-## Naming
+Store a map of breakpoints keyed to their names
 
-Bass uses a slightly modified version [SUIT CSS naming conventions](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md) by Nicholas Gallagher, itself a more readable version of the BEM syntax.
+3. Type-scale
 
-### Components
+Store a set of font-sizes keyed to breakpoints
 
-Components are named in Pascal-case:
+4. Z-index
 
-```
-.ExampleComponent {};
-```
-
-Specialisations or Variations are appended with two hyphens and named in camel-case:
-
-```
-.ExampleComponent--variation {};
-```
-
-Child elements of a component are added using a single hyphen and named in camel-case:
-
-```
-.ExampleComponent-childComponent
-```
-
-Classes encapsulating state are prefixed with `is-` and named in snake-case:
-
-```
-.ExampleComponent.is-active {};
-```
-
-Wherever possible, elements and combinations of elements should be composed into a component. Using
-the naming conventions above for child components should avoid the need to nest classes. However there are times when nesting is sometimes OK.
-
-- In cases where one component contains another component
-- In cases where a child element is very generic (for example `.Icon`) and styling is made easier by the existance of this generic hook.
-
-Even in these cases, deep nesting should be avoided.
-
-### Composed classes vs multiple classes
-
-... TODO ...
-
+The z-index map offers a single place to store z-index information about your application modules.
