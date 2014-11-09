@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>Bass - v1.1.3</title>
+<title>Bass - v1.1.4</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.3</a>
+      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.4</a>
     
   </h1>
 </div>
@@ -218,6 +218,15 @@
             
             <li class="sidebar__item  sassdoc__item" data-name="bass-parse-custom-unit-filter" data-type="function">
               <a href="#function-bass-parse-custom-unit-filter">bass-parse-custom-unit-filter
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="bass-is-unitless-number" data-type="function">
+              <a href="#function-bass-is-unitless-number">bass-is-unitless-number
               
               
               </a>
@@ -828,6 +837,15 @@ with the error saved to <code>$bass-last-error</code> instead so tests can check
     
 
     <li><a href="#function-bass-palette"><code>bass-palette</code></a></li>
+  
+
+
+
+  
+
+    
+
+    <li><a href="#function-bass-rhythm-value"><code>bass-rhythm-value</code></a></li>
   
 
 
@@ -3416,6 +3434,192 @@ Source: Foundation 5</p>
 
 </section>
               
+                <section class="main__item  item" id="function-bass-is-unitless-number">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#function-bass-is-unitless-number">bass-is-unitless-number</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function bass-is-unitless-number($value) { 
+  @return (type-of($value) == number and unitless($value));
+ }"
+    data-collapsed="@function bass-is-unitless-number($value) { ... }"><code>@function bass-is-unitless-number($value) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/bass/bass/functions/_bass.functions.units.scss#L130-L132" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Determine if the value is a valid number with a unit</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$value</code></th>
+          <td data-label="desc"><p>Value to be checked</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>Was the value number with a unit?</p>
+
+  
+    Bool
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+
+
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-bass-rhythm-value"><code>bass-rhythm-value</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne (Originally from Foundation 4 and 5)</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
             </section>
           
         
@@ -4407,9 +4611,21 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) { 
+
+  // Ensure $orientation is valid
   @if $orientation != horizontal and $orientation != vertical {
     $error: bass-throw-error($bass-invalid-value-error, &quot;Orientation must be either `horizontal` or `vertical` but it was `#{$orientation}`&quot;);
   }
+
+  // Ensure $units is valid
+  @if not bass-is-unitless-number($units) {
+    @if map-has-key($custom-units-map, $units) {
+      $units: map-get($custom-units-map, $units)
+    } @else {
+      @return bass-throw-error($bass-invalid-value-error, &quot;The value `#{$units}` is not a valid value for a rhythm unit&quot;);
+    }
+  }
+
   $value: map-get-deep($bass-rhythm-value-map, $breakpoint, $orientation);
   @if $value {
     @return $value * $units;
@@ -4420,7 +4636,7 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
     data-collapsed="@function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) { ... }"><code>@function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L20-L30" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L20-L42" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -4556,6 +4772,32 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
 
     
       <li>
+        <a href="#function-bass-is-unitless-number"><code>bass-is-unitless-number</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#function-bass-throw-error"><code>bass-throw-error</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
         <a href="#function-bass-throw-error"><code>bass-throw-error</code></a>
         
       </li>
@@ -4570,6 +4812,19 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
     
       <li>
         <a href="#variable-bass-invalid-value-error"><code>bass-invalid-value-error</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#variable-custom-units-map"><code>custom-units-map</code></a>
         
       </li>
     
@@ -4741,7 +4996,7 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
     data-collapsed="@function v-rhythm($units: 1, $breakpoint: default) { ... }"><code>@function v-rhythm($units: 1, $breakpoint: default) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L43-L45" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L55-L57" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -4961,7 +5216,7 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
     data-collapsed="@function h-rhythm($units: 1, $breakpoint: default) { ... }"><code>@function h-rhythm($units: 1, $breakpoint: default) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L58-L60" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L70-L72" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -7155,6 +7410,15 @@ them with the rhythm unit.</p>
 
 
 
+  
+
+    
+
+    <li><a href="#function-bass-rhythm-value"><code>bass-rhythm-value</code></a></li>
+  
+
+
+
 
 </ul>
 
@@ -8167,7 +8431,7 @@ them with the rhythm unit.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v1.1.3</span>
+          <span class="project-info__version"> - v1.1.4</span>
 
           <!-- License -->
           
