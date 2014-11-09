@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>Bass - v1.1.4</title>
+<title>Bass - v1.1.6</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.4</a>
+      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.6</a>
     
   </h1>
 </div>
@@ -2097,7 +2097,7 @@ Note: I have a PR open adding this to Sassy maps</p>
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function root-em($values) { 
-  @return em($values, $base-rem-base);
+  @return em($values, $bass-rem-base);
  }"
     data-collapsed="@function root-em($values) { ... }"><code>@function root-em($values) { ... }</code></pre>
 
@@ -2196,6 +2196,19 @@ with the browser default (16px).</p>
     
       <li>
         <a href="#function-em"><code>em</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#variable-bass-rem-base"><code>bass-rem-base</code></a>
         
       </li>
     
@@ -2800,7 +2813,7 @@ Source: Foundation 5</p>
     data-current-state="collapsed"
     data-expanded="@function px-rem() { 
   // Strip units of both in case $value is passed in without units
-  $value: strip-unit($value) / strip-unit($base-rem-base) * 1rem;
+  $value: strip-unit($value) / strip-unit($bass-rem-base) * 1rem;
   @if $value == 0rem {
     $value: 0;
   }
@@ -2877,6 +2890,19 @@ Source: Foundation 5</p>
     
       <li>
         <a href="#function-strip-unit"><code>strip-unit</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#variable-bass-rem-base"><code>bass-rem-base</code></a>
         
       </li>
     
@@ -7273,6 +7299,30 @@ This should be the font-size of the <code>html</code> element</p>
 
 
 
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-root-em"><code>root-em</code></a></li>
+  
+
+
+
+  
+
+    
+
+    <li><a href="#function-px-rem"><code>px-rem</code></a></li>
+  
+
+
+
+
+</ul>
 
 
   
@@ -8431,7 +8481,7 @@ them with the rhythm unit.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v1.1.4</span>
+          <span class="project-info__version"> - v1.1.6</span>
 
           <!-- License -->
           
