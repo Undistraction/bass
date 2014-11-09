@@ -1,9 +1,15 @@
-@import "bootcamp";
 @import "box";
 @import "position";
 @import "rhythm";
 @import "sassy-maps";
-@import "bass";
+
+@import "bootcamp";
+@import "bass/support/reset-errors";
+@import "../sass/bass";
 
 @include runner-start;
+
+@import "bass/utils/bass-breakpoint";
+@import "bass/utils/bass-rhythm-value";
+
 @include runner-end;

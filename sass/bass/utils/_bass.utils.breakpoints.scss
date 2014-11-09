@@ -17,6 +17,6 @@
   @if map-has-key($bass-breakpoints-map, $name) {
     @return map-get($bass-breakpoints-map, $name);
   } @else {
-    $error: bass-throw-errror($bass-no-breakpoint-error, "There is no breakpoint named '#{$name}'");
+    @return bass-throw-error($bass-no-breakpoint-error, "There is no breakpoint named '#{$name}'");
   }
 }

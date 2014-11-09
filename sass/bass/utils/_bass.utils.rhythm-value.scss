@@ -21,12 +21,11 @@
   @if $orientation != horizontal and $orientation != vertical {
     $error: bass-throw-error($bass-invalid-value-error, "Orientation must be either `horizontal` or `vertical` but it was `#{$orientation}`");
   }
-
   $value: map-get-deep($bass-rhythm-value-map, $breakpoint, $orientation);
   @if $value {
     @return $value * $units;
   }@else {
-    $error: bass-throw-error($bass-no-rhythm-error, "There is no rhythm for breakpoint `#{$breakpoint}`");
+    @return bass-throw-error($bass-no-rhythm-error, "There is no rhythm for breakpoint `#{$breakpoint}`");
   }
 };
 

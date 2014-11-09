@@ -1,0 +1,38 @@
+@include describe("bass-breakpoint") {
+
+  @include describe("with a breakpoint that isnt stored") {
+
+    @include it("should thow a bass-no-breakpoint-error") {
+      @include reset-errors();
+      $result: bass-breakpoint("xxxx");
+      @include should(
+        expect(
+          $bass-last-error
+        ),
+        to( equal(
+          $bass-no-breakpoint-error
+        ))
+      );
+    }
+  }
+
+  @include describe("with an existing key") {
+
+    $bass-breakpoints-map: (
+      small: 320px,
+      medium: 720px,
+      large: 1024px
+    ) !global;
+
+    @include it("should return the value for that key") {
+      @include should(
+        expect(
+          bass-breakpoint(medium)
+        ),
+        to( equal(
+          720px
+        ))
+      );
+    }
+  }
+}

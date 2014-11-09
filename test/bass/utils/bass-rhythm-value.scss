@@ -1,0 +1,106 @@
+@include describe("bass-rhythm-value") {
+
+  @include describe("with an unsupported orientation") {
+
+    @include it("should thow a bass-invalid-value-error") {
+      @include reset-errors();
+      $result: bass-rhythm-value("xxxx", 1);
+      @include should(
+        expect(
+          $bass-last-error
+        ),
+        to( equal(
+          $bass-invalid-value-error
+        ))
+      );
+    }
+  }
+
+  @include describe("when requesting a rhythm for a breakpoint that isnt stored") {
+    @include it("should thow a bass-no-rhythm-error") {
+      @include reset-errors();
+      $result: bass-rhythm-value(horizontal, 1, "xxxx");
+      @include should(
+        expect(
+          $bass-last-error
+        ),
+        to( equal(
+          $bass-no-rhythm-error
+        ))
+      );
+    }
+  }
+
+ $bass-rhythm-value-map: (
+    default: (
+      horizontal: 12px,
+      vertical: 10px
+    )
+  ) !global;
+
+  @include describe("with no breakpoint supplied") {
+
+    @include it("should return the default value for the given orientation") {
+      @include should(
+        expect(
+          bass-rhythm-value(horizontal, 1)
+        ),
+        to( equal(12px) )
+      );
+
+      @include should(
+        expect(
+          bass-rhythm-value(vertical, 1)
+        ),
+        to( equal(10px) )
+      );
+    }
+  }
+
+  @include it("should multiply the orientation value by the supplied number of units") {
+    @include should(
+      expect(
+        bass-rhythm-value(horizontal, 2)
+      ),
+      to( equal(24px) )
+    );
+
+    @include should(
+      expect(
+        bass-rhythm-value(vertical, 2)
+      ),
+      to( equal(20px) )
+    );
+  }
+
+  $bass-rhythm-value-map: (
+    default: (
+      horizontal: 12px,
+      vertical: 10px
+    ),
+    small: (
+      horizontal: 14px,
+      vertical: 12px
+    )
+  ) !global;
+
+  @include describe("with a breakpoint supplied") {
+
+    @include it("should return the correct value for the given orientation") {
+      @include should(
+        expect(
+          bass-rhythm-value(horizontal, 1, small)
+        ),
+        to( equal(14px) )
+      );
+
+      @include should(
+        expect(
+          bass-rhythm-value(vertical, 1, small)
+        ),
+        to( equal(12px) )
+      );
+    }
+  }
+
+}

@@ -1,0 +1,5 @@
+@mixin reset-errors() {
+  $bass-last-error: null !global;
+  $bass-under-test: true !global;
+  $bass-error-thrown: false !global;
+}
