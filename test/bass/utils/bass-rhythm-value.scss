@@ -103,4 +103,22 @@
     }
   }
 
+  @include describe("orientation convenience functions") {
+
+    @include it("should return the correct value for the given orientation") {
+      @include should(
+        expect(
+          h-rhythm(1, small)
+        ),
+        to( equal(14px) )
+      );
+
+      @include should(
+        expect(
+          v-rhythm(1, small)
+        ),
+        to( equal(12px) )
+      );
+    }
+  }
 }

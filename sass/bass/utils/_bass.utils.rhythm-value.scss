@@ -40,7 +40,7 @@
 /// @returns {Number}
 ///   The rhythm.
 ///
-@function bass-v-rhythm-value( $units: 1, $breakpoint: default ) {
+@function v-rhythm( $units: 1, $breakpoint: default ) {
   @return bass-rhythm-value(vertical, $units, $breakpoint);
 };
 
@@ -55,6 +55,6 @@
 /// @returns {Number}
 ///   The rhythm.
 ///
-@function bass-h-rhythm-value( $units: 1, $breakpoint:default ) {
+@function h-rhythm( $units: 1, $breakpoint:default ) {
   @return bass-rhythm-value(horizontal, $units, $breakpoint);
 };
