@@ -31,6 +31,22 @@
     }
   }
 
+  @include describe("with an unsupported unit") {
+
+    @include it("should thow a bass-invalid-value-error") {
+      @include reset-errors();
+      $result: bass-rhythm-value(horizontal, "xxxx");
+      @include should(
+        expect(
+          $bass-last-error
+        ),
+        to( equal(
+          $bass-invalid-value-error
+        ))
+      );
+    }
+  }
+
  $bass-rhythm-value-map: (
     default: (
       horizontal: 12px,
@@ -120,5 +136,17 @@
         to( equal(12px) )
       );
     }
+  }
+
+  @include describe("with valid custom unit supplied") {
+
+    @include should(
+      expect(
+        bass-rhythm-value(horizontal, double)
+      ),
+      to( equal(
+        24px
+      ))
+    );
   }
 }

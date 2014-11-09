@@ -117,3 +117,16 @@
     @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
   }
 }
+
+/// Determine if the value is a valid number with a unit
+///
+/// @param {String} $value
+///  Value to be checked
+///
+/// @returns {Bool}
+///  Was the value number with a unit?
+///
+///
+@function bass-is-unitless-number($value) {
+  @return (type-of($value) == number and unitless($value));
+}

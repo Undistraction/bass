@@ -18,9 +18,21 @@
 ///   The rhythm.
 ///
 @function bass-rhythm-value($orientation, $units: 1, $breakpoint: default) {
+
+  // Ensure $orientation is valid
   @if $orientation != horizontal and $orientation != vertical {
     $error: bass-throw-error($bass-invalid-value-error, "Orientation must be either `horizontal` or `vertical` but it was `#{$orientation}`");
   }
+
+  // Ensure $units is valid
+  @if not bass-is-unitless-number($units) {
+    @if map-has-key($custom-units-map, $units) {
+      $units: map-get($custom-units-map, $units)
+    } @else {
+      @return bass-throw-error($bass-invalid-value-error, "The value `#{$units}` is not a valid value for a rhythm unit");
+    }
+  }
+
   $value: map-get-deep($bass-rhythm-value-map, $breakpoint, $orientation);
   @if $value {
     @return $value * $units;
