@@ -1,4 +1,4 @@
-/*! bass v1.1.8 – 09.11.2014 */
+/*! bass v1.1.9 – 09.11.2014 */
 
 ////
 /// @author Pedr Browne
@@ -305,6 +305,12 @@ $bass-type-scale-map:
 ///
 $bass-rem-base: $rhythm-base-font-size !default;
 
+/// Set the value for h-rhythm and v-rhythm to output in.
+///
+/// @type String
+///
+$bass-rhythm-unit: rem;
+
 /// A map containing custom units to use in rhythm, size, box and positional calculations.
 /// You can use any units you like. By default Bass uses fractional units and multiplies
 /// them with the rhythm unit.
@@ -469,7 +475,11 @@ $bass-palette-map: () !default;
 ///   The rhythm.
 ///
 @function v-rhythm( $units: 1, $breakpoint: default ) {
-  @return bass-rhythm-value(vertical, $units, $breakpoint);
+  $pixel-value: bass-rhythm-value(vertical, $units, $breakpoint);
+  @if $bass-rhythm-unit == rem {
+    @return rem($pixel-value);
+  }
+  @return $pixel-value;
 };
 
 /// Get the horizontal rhythm.
@@ -483,8 +493,12 @@ $bass-palette-map: () !default;
 /// @returns {Number}
 ///   The rhythm.
 ///
-@function h-rhythm( $units: 1, $breakpoint:default ) {
-  @return bass-rhythm-value(horizontal, $units, $breakpoint);
+@function h-rhythm( $units: 1, $breakpoint: default ) {
+  $pixel-value: bass-rhythm-value(horizontal, $units, $breakpoint);
+  @if $bass-rhythm-unit == rem {
+    @return rem($pixel-value);
+  }
+  @return $pixel-value;
 };
 
 ////
