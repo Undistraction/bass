@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>Bass - v1.1.8</title>
+<title>Bass - v1.1.9</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.8</a>
+      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.9</a>
     
   </h1>
 </div>
@@ -457,6 +457,15 @@
             
             <li class="sidebar__item  sassdoc__item" data-name="bass-rem-base" data-type="variable">
               <a href="#variable-bass-rem-base">bass-rem-base
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="bass-rhythm-unit" data-type="variable">
+              <a href="#variable-bass-rhythm-unit">bass-rhythm-unit
               
               
               </a>
@@ -2576,6 +2585,30 @@ Source: Foundation 5</p>
 
 
 
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-v-rhythm"><code>v-rhythm</code></a></li>
+  
+
+
+
+  
+
+    
+
+    <li><a href="#function-h-rhythm"><code>h-rhythm</code></a></li>
+  
+
+
+
+
+</ul>
 
 
   
@@ -5017,12 +5050,16 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function v-rhythm($units: 1, $breakpoint: default) { 
-  @return bass-rhythm-value(vertical, $units, $breakpoint);
+  $pixel-value: bass-rhythm-value(vertical, $units, $breakpoint);
+  @if $bass-rhythm-unit == rem {
+    @return rem($pixel-value);
+  }
+  @return $pixel-value;
  }"
     data-collapsed="@function v-rhythm($units: 1, $breakpoint: default) { ... }"><code>@function v-rhythm($units: 1, $breakpoint: default) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L55-L57" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L55-L61" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -5137,6 +5174,32 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
 
 
 
+  
+    
+
+    
+      <li>
+        <a href="#function-rem"><code>rem</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#variable-bass-rhythm-unit"><code>bass-rhythm-unit</code></a>
+        
+      </li>
+    
+  
+
+
+
 
 </ul>
 
@@ -5237,12 +5300,16 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
     data-expanded="@function h-rhythm($units: 1, $breakpoint: default) { 
-  @return bass-rhythm-value(horizontal, $units, $breakpoint);
+  $pixel-value: bass-rhythm-value(horizontal, $units, $breakpoint);
+  @if $bass-rhythm-unit == rem {
+    @return rem($pixel-value);
+  }
+  @return $pixel-value;
  }"
     data-collapsed="@function h-rhythm($units: 1, $breakpoint: default) { ... }"><code>@function h-rhythm($units: 1, $breakpoint: default) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L70-L72" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.rhythm-value.scss#L74-L80" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -5350,6 +5417,32 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
     
       <li>
         <a href="#function-bass-rhythm-value"><code>bass-rhythm-value</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#function-rem"><code>rem</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
+        <a href="#variable-bass-rhythm-unit"><code>bass-rhythm-unit</code></a>
         
       </li>
     
@@ -7362,6 +7455,144 @@ This should be the font-size of the <code>html</code> element</p>
 
 </section>
               
+                <section class="main__item  item" id="variable-bass-rhythm-unit">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-bass-rhythm-unit">bass-rhythm-unit</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$bass-rhythm-unit: rem;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/bass/bass/config/_bass.config.units.scss#L17-L17" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Set the value for h-rhythm and v-rhythm to output in.</p>
+</div>
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>String</code>
+  
+  </p>
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-v-rhythm"><code>v-rhythm</code></a></li>
+  
+
+
+
+  
+
+    
+
+    <li><a href="#function-h-rhythm"><code>h-rhythm</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
                 <section class="main__item  item" id="variable-custom-units-map">
 
 <h3 class="item__heading">
@@ -7394,7 +7625,7 @@ This should be the font-size of the <code>html</code> element</p>
 ) !default;</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/config/_bass.config.units.scss#L19-L27" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/config/_bass.config.units.scss#L25-L33" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -8481,7 +8712,7 @@ them with the rhythm unit.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v1.1.8</span>
+          <span class="project-info__version"> - v1.1.9</span>
 
           <!-- License -->
           
