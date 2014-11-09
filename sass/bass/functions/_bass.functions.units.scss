@@ -19,7 +19,7 @@
 /// @access public
 ///
 @function root-em($values) {
-  @return em($values, $base-rem-base);
+  @return em($values, $bass-rem-base);
 }
 
 /// This is the old em-calc function from Foundation 4
@@ -28,7 +28,7 @@
 ///
 /// @access public
 ///
-@function em($values, $base-value: $base-rem-base) {
+@function em($values, $base-value: $bass-rem-base) {
     $max: length($values); // Get the total number of parameters passed
 
     @if $max == 1 {
@@ -75,7 +75,7 @@
 ///
 @function px-rem($value) {
   // Strip units of both in case $value is passed in without units
-  $value: strip-unit($value) / strip-unit($base-rem-base) * 1rem;
+  $value: strip-unit($value) / strip-unit($bass-rem-base) * 1rem;
   @if $value == 0rem {
     $value: 0;
   }
@@ -85,7 +85,7 @@
 ///
 /// @access private
 ///
-@function px-em($value, $base-value: $base-rem-base) {
+@function px-em($value, $base-value: $bass-rem-base) {
   // Strip units of both in case $value is passed in without units
   $value: strip-unit($value) / strip-unit($base-value) * 1em;
   @if $value == 0em {
