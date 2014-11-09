@@ -40,6 +40,6 @@ $bass-z-index-map: () !default;
 /// @outputs
 ///   The item's z-index
 ///
-@mixin bass-z-index($path...) {
+@mixin z($path...) {
   z-index: bass-z-index($path...);
 }
