@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>Bass - v1.1.9</title>
+<title>Bass - v1.1.10</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.9</a>
+      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.10</a>
     
   </h1>
 </div>
@@ -473,8 +473,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="custom-units-map" data-type="variable">
-              <a href="#variable-custom-units-map">custom-units-map
+            <li class="sidebar__item  sassdoc__item" data-name="bass-custom-units-map" data-type="variable">
+              <a href="#variable-bass-custom-units-map">bass-custom-units-map
               
               
               </a>
@@ -3244,20 +3244,25 @@ Source: Foundation 5</p>
 <div class="relative  clear  code--collapsed">
   <pre class="item__code  item__code--togglable  language-scss"
     data-current-state="collapsed"
-    data-expanded="@function bass-parse-custom-unit-filter($key, $orientation) { 
-  @if map-has-key($custom-units-map, $key) {
+    data-expanded="@function bass-parse-custom-unit-filter($value, $orientation) { 
+  // Handle unitless values
+  @if type-of($value) == number {
+    @if unitless($value) {
+      @return bass-rhythm-value($orientation, $value);
+    }
+  // Handle values in the custom units map
+  } @else if map-has-key($bass-custom-units-map, $value) {
     // Find the unit
-    $unit: map-get($custom-units-map, $key);
+    $unit: map-get($custom-units-map, $value);
     // Use the unit with the rhythm value for the orientation
     @return bass-rhythm-value($orientation, $unit);
-  } @else {
-    @return bass-throw-error($bass-invalid-value-error, &quot;Invalid value #{$value}&quot;);
   }
+  @return bass-throw-error($bass-invalid-value-error, &quot;Invalid value #{$value}&quot;);
  }"
-    data-collapsed="@function bass-parse-custom-unit-filter($key, $orientation) { ... }"><code>@function bass-parse-custom-unit-filter($key, $orientation) { ... }</code></pre>
+    data-collapsed="@function bass-parse-custom-unit-filter($value, $orientation) { ... }"><code>@function bass-parse-custom-unit-filter($value, $orientation) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/functions/_bass.functions.units.scss#L110-L119" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/functions/_bass.functions.units.scss#L110-L124" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -3293,7 +3298,7 @@ Source: Foundation 5</p>
     <tbody>
       
         <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$key</code></th>
+          <th scope="row" data-label="name"><code>$value</code></th>
           <td data-label="desc"><p>The value to parse.</p>
 </td>
           <td data-label="type">
@@ -3386,6 +3391,19 @@ Source: Foundation 5</p>
 
     
       <li>
+        <a href="#function-bass-rhythm-value"><code>bass-rhythm-value</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+    
+
+    
+      <li>
         <a href="#function-bass-throw-error"><code>bass-throw-error</code></a>
         
       </li>
@@ -3399,7 +3417,7 @@ Source: Foundation 5</p>
 
     
       <li>
-        <a href="#variable-custom-units-map"><code>custom-units-map</code></a>
+        <a href="#variable-bass-custom-units-map"><code>bass-custom-units-map</code></a>
         
       </li>
     
@@ -3535,7 +3553,7 @@ Source: Foundation 5</p>
     data-collapsed="@function bass-is-unitless-number($value) { ... }"><code>@function bass-is-unitless-number($value) { ... }</code></pre>
 
   
-    <a href="https://github.com/Undistraction/bass/bass/functions/_bass.functions.units.scss#L130-L132" class="item__source-link" target="_blank">View source</a>
+    <a href="https://github.com/Undistraction/bass/bass/functions/_bass.functions.units.scss#L135-L137" class="item__source-link" target="_blank">View source</a>
   
 </div>
 
@@ -4678,8 +4696,8 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
 
   // Ensure $units is valid
   @if not bass-is-unitless-number($units) {
-    @if map-has-key($custom-units-map, $units) {
-      $units: map-get($custom-units-map, $units)
+    @if map-has-key($bass-custom-units-map, $units) {
+      $units: map-get($bass-custom-units-map, $units)
     } @else {
       @return bass-throw-error($bass-invalid-value-error, &quot;The value `#{$units}` is not a valid value for a rhythm unit&quot;);
     }
@@ -4883,7 +4901,7 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
 
     
       <li>
-        <a href="#variable-custom-units-map"><code>custom-units-map</code></a>
+        <a href="#variable-bass-custom-units-map"><code>bass-custom-units-map</code></a>
         
       </li>
     
@@ -4933,6 +4951,15 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
       
       <h3 class="item__sub-heading">Used by</h3>
       <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-bass-parse-custom-unit-filter"><code>bass-parse-custom-unit-filter</code></a></li>
+  
+
+
+
+  
+
     
 
     <li><a href="#function-bass-parse-custom-unit-filter"><code>bass-parse-custom-unit-filter</code></a></li>
@@ -7593,12 +7620,12 @@ This should be the font-size of the <code>html</code> element</p>
 
 </section>
               
-                <section class="main__item  item" id="variable-custom-units-map">
+                <section class="main__item  item" id="variable-bass-custom-units-map">
 
 <h3 class="item__heading">
   
 
-  <a class="item__name" href="#variable-custom-units-map">custom-units-map</a>
+  <a class="item__name" href="#variable-bass-custom-units-map">bass-custom-units-map</a>
 
   
 
@@ -7614,7 +7641,7 @@ This should be the font-size of the <code>html</code> element</p>
 
 
 <div class="relative  clear">
-  <pre class="item__code  language-scss"><code>$custom-units-map: (
+  <pre class="item__code  language-scss"><code>$bass-custom-units-map: (
   single: 1,
   double: 2,
   triple: 3,
@@ -8712,7 +8739,7 @@ them with the rhythm unit.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v1.1.9</span>
+          <span class="project-info__version"> - v1.1.10</span>
 
           <!-- License -->
           

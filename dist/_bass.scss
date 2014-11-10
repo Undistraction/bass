@@ -1,4 +1,4 @@
-/*! bass v1.1.9 – 09.11.2014 */
+/*! bass v1.1.10 – 10.11.2014 */
 
 ////
 /// @author Pedr Browne
@@ -202,7 +202,7 @@ $bass-error-thrown: false;
 
 /// Parse custom values into distance values.
 ///
-/// @param {String} $key
+/// @param {String} $value
 ///   The value to parse.
 ///
 /// @param {String} $orientation
@@ -213,15 +213,20 @@ $bass-error-thrown: false;
 ///
 /// @throws $bass-invalid-value-error
 ///
-@function bass-parse-custom-unit-filter($key, $orientation){
-  @if map-has-key($custom-units-map, $key) {
+@function bass-parse-custom-unit-filter($value, $orientation){
+  // Handle unitless values
+  @if type-of($value) == number {
+    @if unitless($value) {
+      @return bass-rhythm-value($orientation, $value);
+    }
+  // Handle values in the custom units map
+  } @else if map-has-key($bass-custom-units-map, $value) {
     // Find the unit
-    $unit: map-get($custom-units-map, $key);
+    $unit: map-get($custom-units-map, $value);
     // Use the unit with the rhythm value for the orientation
     @return bass-rhythm-value($orientation, $unit);
-  } @else {
-    @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
   }
+  @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
 }
 
 /// Determine if the value is a valid number with a unit
@@ -242,17 +247,6 @@ $bass-error-thrown: false;
 /// @type Map
 ///
 $bass-breakpoints-map: () !default;
-
-// Define a map of units
-$custom-units-map: (
-  single: 1,
-  double: 2,
-  triple: 3,
-  quadruple: 4,
-  half: 0.5,
-  third: 0.333333333333,
-  quarter: 0.25
-) !default;
 
 ////
 /// @author Pedr Browne
@@ -317,7 +311,7 @@ $bass-rhythm-unit: rem;
 ///
 /// @type Map
 ///
-$custom-units-map: (
+$bass-custom-units-map: (
   single: 1,
   double: 2,
   triple: 3,
@@ -448,8 +442,8 @@ $bass-palette-map: () !default;
 
   // Ensure $units is valid
   @if not bass-is-unitless-number($units) {
-    @if map-has-key($custom-units-map, $units) {
-      $units: map-get($custom-units-map, $units)
+    @if map-has-key($bass-custom-units-map, $units) {
+      $units: map-get($bass-custom-units-map, $units)
     } @else {
       @return bass-throw-error($bass-invalid-value-error, "The value `#{$units}` is not a valid value for a rhythm unit");
     }
