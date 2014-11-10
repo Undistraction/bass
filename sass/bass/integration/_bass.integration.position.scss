@@ -14,6 +14,6 @@
 /// @returns {Number}
 ///   The parsed value
 ///
-@function position-parse-value-filter($key, $orientation){
+@function pos-parse-value-filter($key, $orientation){
   @return bass-parse-custom-unit-filter($key, $orientation);
 }
