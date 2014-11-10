@@ -1,4 +1,4 @@
-/*! bass v1.1.10 – 10.11.2014 */
+/*! bass v1.1.16 – 10.11.2014 */
 
 ////
 /// @author Pedr Browne
@@ -222,7 +222,7 @@ $bass-error-thrown: false;
   // Handle values in the custom units map
   } @else if map-has-key($bass-custom-units-map, $value) {
     // Find the unit
-    $unit: map-get($custom-units-map, $value);
+    $unit: map-get($bass-custom-units-map, $value);
     // Use the unit with the rhythm value for the orientation
     @return bass-rhythm-value($orientation, $unit);
   }
