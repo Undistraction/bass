@@ -18,3 +18,8 @@
   /// Establish rhythm
   @include rhythm-establish;
 }
+
+// Override
+@function rhythm-parse-value-filter($value) {
+  @return bass-type-scale($value);
+}

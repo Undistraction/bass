@@ -1,0 +1,45 @@
+@include describe("rhythm-parse-value-filter") {
+
+  @include describe("with invalid value") {
+
+    @include it("should thow a bass-no-type-scale-value-error") {
+      @include reset-errors();
+      $result: rhythm-parse-value-filter("xxxx");
+      @include should(
+        expect(
+          $bass-last-error
+        ),
+        to( equal(
+          $bass-no-type-scale-value-error
+        ))
+      );
+    }
+
+    @include it("should thow a bass-no-type-scale-value-error") {
+      @include reset-errors();
+      $result: rhythm-parse-value-filter(5);
+      @include should(
+        expect(
+          $bass-last-error
+        ),
+        to( equal(
+          $bass-no-type-scale-value-error
+        ))
+      );
+    }
+
+    @include describe("with an existing custom value") {
+
+      @include it("should lookup the value in the bass-type-scale map") {
+        @include should(
+          expect(
+            rhythm-parse-value-filter(large)
+          ),
+          to( equal(
+            22px
+          ))
+        );
+      }
+    }
+  }
+}

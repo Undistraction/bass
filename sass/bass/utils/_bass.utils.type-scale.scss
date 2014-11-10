@@ -44,6 +44,14 @@
   @if $value {
     @return $value;
   }@else {
-    $error: bass-throw-error($bass-no-type-scale-value-error, "There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`");
+    @return bass-throw-error($bass-no-type-scale-value-error, "There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`");
   }
+}
+
+/// Get the font-size for the given name
+///
+/// @see bass-type-scale
+///
+@function ts($name, $breakpoint:default) {
+  @return bass-type-scale($name, $breakpoint);
 }
