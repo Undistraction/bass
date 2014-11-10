@@ -1,0 +1,29 @@
+@include describe("bass-parse-custom-unit-filter") {
+
+  @include it("should thow a bass-invalid-value-error") {
+    @include reset-errors();
+    $result: bass-parse-custom-unit-filter("xxxx", horizontal);
+    @include should(
+      expect(
+        $bass-last-error
+      ),
+      to( equal(
+        $bass-invalid-value-error
+      ))
+    );
+  }
+
+  @include describe("with unitless value") {
+
+    @include it("should return the value multiplied by the default rhythm") {
+      @include should(
+        expect(
+          bass-parse-custom-unit-filter(2, horizontal)
+        ),
+        to( equal(
+          44px
+        ))
+      );
+    }
+  }
+}

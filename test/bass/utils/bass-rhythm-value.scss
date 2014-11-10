@@ -140,13 +140,15 @@
 
   @include describe("with valid custom unit supplied") {
 
-    @include should(
-      expect(
-        bass-rhythm-value(horizontal, double)
-      ),
-      to( equal(
-        24px
-      ))
-    );
+    @include it("should return the correct value for the given orientation") {
+      @include should(
+        expect(
+          bass-rhythm-value(horizontal, double)
+        ),
+        to( equal(
+          24px
+        ))
+      );
+    }
   }
 }

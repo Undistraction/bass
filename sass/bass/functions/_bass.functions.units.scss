@@ -96,7 +96,7 @@
 
 /// Parse custom values into distance values.
 ///
-/// @param {String} $key
+/// @param {String} $value
 ///   The value to parse.
 ///
 /// @param {String} $orientation
@@ -107,15 +107,20 @@
 ///
 /// @throws $bass-invalid-value-error
 ///
-@function bass-parse-custom-unit-filter($key, $orientation){
-  @if map-has-key($custom-units-map, $key) {
+@function bass-parse-custom-unit-filter($value, $orientation){
+  // Handle unitless values
+  @if type-of($value) == number {
+    @if unitless($value) {
+      @return bass-rhythm-value($orientation, $value);
+    }
+  // Handle values in the custom units map
+  } @else if map-has-key($bass-custom-units-map, $value) {
     // Find the unit
-    $unit: map-get($custom-units-map, $key);
+    $unit: map-get($custom-units-map, $value);
     // Use the unit with the rhythm value for the orientation
     @return bass-rhythm-value($orientation, $unit);
-  } @else {
-    @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
   }
+  @return bass-throw-error($bass-invalid-value-error, "Invalid value #{$value}");
 }
 
 /// Determine if the value is a valid number with a unit

@@ -26,8 +26,8 @@
 
   // Ensure $units is valid
   @if not bass-is-unitless-number($units) {
-    @if map-has-key($custom-units-map, $units) {
-      $units: map-get($custom-units-map, $units)
+    @if map-has-key($bass-custom-units-map, $units) {
+      $units: map-get($bass-custom-units-map, $units)
     } @else {
       @return bass-throw-error($bass-invalid-value-error, "The value `#{$units}` is not a valid value for a rhythm unit");
     }
