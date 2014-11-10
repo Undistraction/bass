@@ -1,4 +1,4 @@
-/*! bass v1.1.18 – 10.11.2014 */
+/*! bass v1.1.19 – 10.11.2014 */
 
 ////
 /// @author Pedr Browne
@@ -541,8 +541,16 @@ $bass-palette-map: () !default;
   @if $value {
     @return $value;
   }@else {
-    $error: bass-throw-error($bass-no-type-scale-value-error, "There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`");
+    @return bass-throw-error($bass-no-type-scale-value-error, "There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`");
   }
+}
+
+/// Get the font-size for the given name
+///
+/// @see bass-type-scale
+///
+@function ts($name, $breakpoint:default) {
+  @return bass-type-scale($name, $breakpoint);
 }
 
 ////

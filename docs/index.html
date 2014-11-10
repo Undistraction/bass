@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>Bass - v1.1.18</title>
+<title>Bass - v1.1.19</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.18</a>
+      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.19</a>
     
   </h1>
 </div>
@@ -328,6 +328,15 @@
             
             <li class="sidebar__item  sassdoc__item" data-name="bass-type-scale" data-type="function">
               <a href="#function-bass-type-scale">bass-type-scale
+              
+              
+              </a>
+            </li>
+            
+          
+            
+            <li class="sidebar__item  sassdoc__item" data-name="ts" data-type="function">
+              <a href="#function-ts">ts
               
               
               </a>
@@ -5810,7 +5819,7 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
   @if $value {
     @return $value;
   }@else {
-    $error: bass-throw-error($bass-no-type-scale-value-error, &quot;There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`&quot;);
+    @return bass-throw-error($bass-no-type-scale-value-error, &quot;There is no type scale value anmed #{$name} for breakpoint `#{$breakpoint}`&quot;);
   }
  }"
     data-collapsed="@function bass-type-scale($name, $breakpoint) { ... }"><code>@function bass-type-scale($name, $breakpoint) { ... }</code></pre>
@@ -5975,6 +5984,21 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
 
 
 
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-ts"><code>ts</code></a></li>
+  
+
+
+
+
+</ul>
 
 
   
@@ -5986,6 +6010,163 @@ If no name is given, the values in <code>$palette</code> are added to $palette m
     
 
 
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="function-ts">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#function-ts">ts</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function ts() { 
+  @return bass-type-scale($name, $breakpoint);
+ }"
+    data-collapsed="@function ts() { ... }"><code>@function ts() { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/bass/bass/utils/_bass.utils.type-scale.scss#L55-L57" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Get the font-size for the given name</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <p>None.</p>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+  
+    
+      
+      <h3 class="item__sub-heading">Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    
+      <li>
+        <a href="#function-bass-type-scale"><code>bass-type-scale</code></a>
+        
+      </li>
+    
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+  
+    
+      
+      <h3 class="item__sub-heading">See</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-bass-type-scale"><code>bass-type-scale</code></a></li>
+  
+
+
+
+
+</ul>
 
 
   
@@ -8739,7 +8920,7 @@ them with the rhythm unit.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v1.1.18</span>
+          <span class="project-info__version"> - v1.1.19</span>
 
           <!-- License -->
           
