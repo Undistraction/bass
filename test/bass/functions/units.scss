@@ -13,6 +13,20 @@
     );
   }
 
+  @include describe("with custom value") {
+
+    @include it("should lookup the value and multiply it the default rhythm") {
+      @include should(
+        expect(
+          bass-parse-custom-unit-filter(single, horizontal)
+        ),
+        to( equal(
+          22px
+        ))
+      );
+    }
+  }
+
   @include describe("with unitless value") {
 
     @include it("should return the value multiplied by the default rhythm") {
