@@ -29,5 +29,12 @@ $bass-custom-units-map: (
   quadruple: 4,
   half: 0.5,
   third: 0.333333333,
-  quarter: 0.25
+  quarter: 0.25,
+  -single: -1,
+  -double: -2,
+  -triple: -3,
+  -quadruple: -4,
+  -half: -0.5,
+  -third: -0.333333333,
+  -quarter: -0.25
 ) !default;
