@@ -1,0 +1,9 @@
+$semantic-colors-map: () !default;
+
+@function cp-parse-value-filter($value) {
+  @if map-has-key($semantic-colors-map, $value) {
+    @return map-get($semantic-colors-map, $value);
+  } @else {
+    @return cp-throw-error($cp-missing-color-error, "Palette value at path: `#{$value}` didn't exist in map `#{inspect($color-palette-map)}`");
+  }
+}
