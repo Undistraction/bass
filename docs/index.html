@@ -8,7 +8,7 @@
   
   <meta charset="utf-8" />
 
-<title>Bass - v1.1.27</title>
+<title>Bass - v1.1.28</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 <meta name="viewport" content="width=device-width">
@@ -26,7 +26,7 @@
   <div class="sidebar__header">
   <h1 class="sidebar__title">
     
-      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.27</a>
+      <a href="https://github.com/Undistraction/Bass">Bass - v1.1.28</a>
     
   </h1>
 </div>
@@ -92,6 +92,15 @@
             
           
             
+            <li class="sidebar__item  sassdoc__item" data-name="cp-parse-value-filter" data-type="function">
+              <a href="#function-cp-parse-value-filter">cp-parse-value-filter
+              
+              
+              </a>
+            </li>
+            
+          
+            
             <li class="sidebar__item  sassdoc__item" data-name="pos-parse-value-filter" data-type="function">
               <a href="#function-pos-parse-value-filter">pos-parse-value-filter
               
@@ -117,6 +126,29 @@
             <ul class="list-unstyled">
             <li class="sidebar__item  sassdoc__item" data-name="span-centered" data-type="mixin">
               <a href="#mixin-span-centered">span-centered
+              
+              
+              </a>
+            </li>
+            </ul>
+          
+        
+        
+      
+        
+
+        
+        
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="integration-variable"><a href="#integration-variable">variables</a></p>
+
+          
+          
+            <ul class="list-unstyled">
+            <li class="sidebar__item  sassdoc__item" data-name="semantic-colors-map" data-type="variable">
+              <a href="#variable-semantic-colors-map">semantic-colors-map
               
               
               </a>
@@ -1129,6 +1161,206 @@ with the error saved to <code>$bass-last-error</code> instead so tests can check
 
 </section>
               
+                <section class="main__item  item" id="function-cp-parse-value-filter">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#function-cp-parse-value-filter">cp-parse-value-filter</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function cp-parse-value-filter($value) { 
+  $first-value: nth($value, 1);
+  @if map-has-key($semantic-colors-map, $first-value) {
+    $parsed-value: map-get($semantic-colors-map, $first-value);
+    @if length($value) &gt; 1 {
+      // Add it back as the first item in the list
+      $parsed-value: set-nth($value, 1, $parsed-value);
+    }
+    @return $parsed-value;
+  } @else {
+    @return cp-throw-error($cp-missing-color-error, &quot;Palette value at path: `#{$value}` didn&#39;t exist in map `#{inspect($color-palette-map)}`&quot;);
+  }
+ }"
+    data-collapsed="@function cp-parse-value-filter($value) { ... }"><code>@function cp-parse-value-filter($value) { ... }</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/bass/bass/integration/_bass.integration.color-palette.scss#L17-L29" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Override color-palette&#39;s filter hook to enable custom unit parsing</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$value</code></th>
+          <td data-label="desc"><p>The value to parse.</p>
+</td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Returns</h3>
+
+  <p class="sassdoc__item-description"><p>The parsed value</p>
+
+  
+    Number
+  
+  </p>
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+  
+    
+      
+      <h3 class="item__sub-heading">Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    
+      <li>
+        <a href="#variable-semantic-colors-map"><code>semantic-colors-map</code></a>
+        
+      </li>
+    
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
                 <section class="main__item  item" id="function-pos-parse-value-filter">
 
 <h3 class="item__heading">
@@ -1485,6 +1717,141 @@ with the error saved to <code>$bass-last-error</code> instead so tests can check
 
 
 
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+  <h3 class="item__sub-heading">Author</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>Pedr Browne</p>
+</li>
+    
+  </ul>
+
+
+  
+
+
+
+</section>
+              
+            </section>
+          
+        
+
+          
+          
+
+          
+          
+            <section class="main__sub-section" id="integration-variable">
+              <h2 class="main__heading--secondary">variables</h2>
+
+              
+              
+                <section class="main__item  item" id="variable-semantic-colors-map">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-semantic-colors-map">semantic-colors-map</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+<div class="relative  clear">
+  <pre class="item__code  language-scss"><code>$semantic-colors-map: () !default;</code></pre>
+
+  
+    <a href="https://github.com/Undistraction/bass/bass/integration/_bass.integration.color-palette.scss#L7-L7" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Map to store semantic names keyed to colour paths</p>
+</div>
+
+
+  
+    
+    
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#function-cp-parse-value-filter"><code>cp-parse-value-filter</code></a></li>
+  
+
+
+
+
+</ul>
 
 
   
@@ -7880,7 +8247,7 @@ them with the rhythm unit.</p>
           
 
           <!-- Version -->
-          <span class="project-info__version"> - v1.1.27</span>
+          <span class="project-info__version"> - v1.1.28</span>
 
           <!-- License -->
           
