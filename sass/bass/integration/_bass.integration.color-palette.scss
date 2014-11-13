@@ -1,10 +1,28 @@
+////
+/// @author Pedr Browne
+/// @group integration
+////
+
+/// Map to store semantic names keyed to colour paths
 $semantic-colors-map: () !default;
 
+/// Override color-palette's filter hook to enable custom unit parsing
+///
+/// @param {String} $value
+///   The value to parse.
+///
+/// @returns {Number}
+///   The parsed value
+///
 @function cp-parse-value-filter($value...) {
-  // Value is an argList and we only support single value lookup
-  $value: nth($value, 1);
-  @if map-has-key($semantic-colors-map, $value) {
-    @return map-get($semantic-colors-map, $value);
+  $first-value: nth($value, 1);
+  @if map-has-key($semantic-colors-map, $first-value) {
+    $parsed-value: map-get($semantic-colors-map, $first-value);
+    @if length($value) > 1 {
+      // Add it back as the first item in the list
+      $parsed-value: set-nth($value, 1, $parsed-value);
+    }
+    @return $parsed-value;
   } @else {
     @return cp-throw-error($cp-missing-color-error, "Palette value at path: `#{$value}` didn't exist in map `#{inspect($color-palette-map)}`");
   }
