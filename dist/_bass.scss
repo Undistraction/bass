@@ -1,4 +1,4 @@
-/*! bass v1.1.23 – 12.11.2014 */
+/*! bass v1.1.24 – 13.11.2014 */
 
 ////
 /// @author Pedr Browne
@@ -349,76 +349,6 @@ $bass-custom-units-map: (
   } @else {
     @return bass-throw-error($bass-no-breakpoint-error, "There is no breakpoint named '#{$name}'");
   }
-}
-
-////
-/// @author Pedr Browne
-/// @group utils
-////
-
-/// A Map of palettes to encourage conistancy throughout the application.
-///
-/// @type Map
-///
-$bass-palette-map: () !default;
-
-/// Look up a color value in the `$bass-palette-map`.
-///
-/// @param {List} $path
-///   A path to the desired color.
-///
-/// @returns {Color}
-///   The colour value matching the supplied path.
-///
-/// @throws $bass-map-path-error
-///
-@function bass-palette($path...) {
-  $value: map-get-deep($bass-palette-map, $path);
-  @if $value {
-    @return $value;
-  } @else {
-    @return bass-throw-error($bass-no-palette-value-error, "The supplied path didn't resolve to a color: `#{$path}` in map `#{inspect($bass-palette-map)}`");
-  }
-}
-
-/// Shorthand for `palette`
-///
-/// @see palette
-///
-@function p($path...) {
-  @return bass-palette($path...);
-}
-
-/// Register a palette to make it available using the palette() function.
-/// If no name is given, the values in `$palette` are added to $palette map's top level
-///
-/// @param {String} $name
-///   The name of the palette.
-///
-/// @param {Map} $palette
-///   A map of colour values.
-///
-/// @param {Bool} $overwrite (true)
-///   Should this palette overwrite existing values?
-///
-/// @return {null}
-///
-@function bass-register-palette($name, $palette, $overwrite:true) {
-  // Merge, overriding existing values
-  @if $name {
-    $bass-palette-map: map-merge-deep($bass-palette-map, ($name: $palette), $overwrite) !global;
-  }@else{
-    $bass-palette-map: map-merge-deep($bass-palette-map, $palette, $overwrite) !global;
-  }
-  @return null;
-}
-
-/// A mixin to allow `register-pallette` to be called from the root.
-///
-/// @see register-palette
-///
-@mixin bass-register-palette($name, $palette, $overwrite:true){
-  $temp: bass-register-palette($name, $palette, $overwrite);
 }
 
 ////
