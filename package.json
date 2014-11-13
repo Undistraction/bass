@@ -1,7 +1,7 @@
 {
   "name": "Bass",
   "title": "Bass",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "description": "Sass Toolkit",
   "main": "dist/_bassn.scss",
   "directories": {
