@@ -1,6 +1,6 @@
 $semantic-colors-map: () !default;
 
-@function cp-parse-value-filter($value) {
+@function cp-parse-value-filter($value...) {
   // Value is an argList and we only support single value lookup
   $value: nth($value, 1);
   @if map-has-key($semantic-colors-map, $value) {
