@@ -1,4 +1,4 @@
-/*! bass v1.2.0 – 13.11.2014 */
+/*! bass v1.2.1 – 23.06.2015 */
 
 ////
 /// @author Pedr Browne
@@ -303,7 +303,7 @@ $bass-rem-base: $rhythm-base-font-size !default;
 ///
 /// @type String
 ///
-$bass-rhythm-unit: rem;
+$bass-rhythm-unit: rem !default;
 
 /// A map containing custom units to use in rhythm, size, box and positional calculations.
 /// You can use any units you like. By default Bass uses fractional units and multiplies
